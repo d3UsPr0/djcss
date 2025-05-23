@@ -51,7 +51,7 @@
 
 /* Navigation Menu Styling */
 .navbar-custom {
-  background-color: #9dfcc0 !important;
+ background-color: #9dfcc0 !important;
   box-shadow: 0 2px 10px rgba(0,0,0,0.1);
   padding-top: 0.2rem !important;  /* Reduced from 0.3rem */
   padding-bottom: 0.2rem !important;  /* Reduced from 0.3rem */
@@ -122,17 +122,13 @@
       }
 
       .card-header-custom {
-        background-color:#9dfcc0;
-        color: #6404a0;
+        background: #6404a0;
+        color:rgb(255, 255, 255);
         font-weight: bold;
         font-size: 1.1rem;
         border-top-left-radius: 0.5rem;
         border-top-right-radius: 0.5rem;
         border: none;
-      }
-      .card:hover {
-        transform: translateY(-5px);
-        transition: transform 0.3s ease;
       }
       .navbar-wrapper.sticky .navbar-toggler-icon {
         filter: invert(1);
@@ -302,6 +298,7 @@
   background-color: #f8f9fa;
 }
 
+
 /* Program list styling */
 .program-list li {
   padding-left: 5px;
@@ -311,6 +308,28 @@
 .marquee-vertical ul {
   padding-left: 0;
 }
+  /* Stats block animations */
+  .stats-block {
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+    border: 2px solid transparent;
+  }
+  
+  .stats-block:hover {
+    transform: translateY(-8px) scale(1.03);
+    border-color: rgba(157, 252, 192, 0.3);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+    background-color: rgba(255,255,255,0.15) !important;
+  }
+  
+  /* Counter animation */
+  .counter {
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #6404a0;
+  }
+  .stats-text{
+    color: #6404a0;
+  }
 
 .footer {
     background-color: #f8f9fa;
@@ -408,7 +427,7 @@
 
     <!-- Navigation -->
 <div class="navbar-wrapper" id="navbarWrapper">
-    <nav class="navbar navbar-expand-lg navbar-light navbar-custom py-2">
+    <nav class="navbar navbar-expand-lg shadow-bg navbar-light navbar-custom py-2">
       <div class="container">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
           <span class="navbar-toggler-icon"></span>
@@ -470,7 +489,7 @@
                 Welcome to Dr. John Chacha Secondary School. We are committed to
                 excellence in education and character formation...
               </p>
-              <a href="#" class="btn btn-link text-primary"
+              <a href="#" class="btn btn-link text-success"
                 >Read More <i class="bi bi-arrow-right"></i
               ></a>
             </div>
@@ -519,7 +538,7 @@
                   >
                 </div>
               </div>
-              <a href="#" class="btn btn-outline-primary btn-sm">
+              <a href="#" class="btn btn-outline-success btn-sm">
                 <i class="fas fa-list me-1"></i> All News
               </a>
             </div>
@@ -558,7 +577,7 @@
                 />
                 <div>Name - Title</div>
               </div>
-              <a href="#" class="btn btn-outline-primary btn-sm">
+              <a href="#" class="btn btn-outline-success btn-sm">
                 <i class="fas fa-list me-1"></i> All Staff Profiles
               </a>
             </div>
@@ -582,8 +601,8 @@
                     <strong>Sports Day</strong> - June 1st at 9 AM
                   </li>
                 </ul>
-                <a href="#" class="btn btn-outline-primary btn-sm">
-                  <i class="fas fa-list me-1"></i> All Announcements
+                <a href="#" class="btn btn-outline-success btn-sm">
+                  <i class="fas fa-list me-1 "></i> All Announcements
                 </a>
               </div>
             </div>
@@ -662,30 +681,153 @@
               </div>
           </div>
     </div>
+<!-- Statistics Card Block -->
+<div class="mb-4">  <!-- Matches 90% width and adds bottom margin -->
+  <div class="card shadow-sm border-0 overflow-hidden">
+    <!-- Card Header -->
+    <div class="card-header card-header-custom">
+      <h4 class="mb-0 text-center"><i class="fas fa-chart-line me-2"></i> School Statistics - 2025</h4>
+    </div>
+    
+    <!-- Card Body -->
+    <div class="card-body py-4">
+      <div class="row g-3 text-center">
+        <!-- Teachers -->
+        <div class="col-6 col-md-4 col-lg-2">
+          <div class="p-3 rounded-3 stats-block h-100" style="background-color: rgba(255,255,255,0.1);">
+            <i class="fas fa-chalkboard-teacher fa-2x mb-3" style="color: #9dfcc0;"></i>
+            <h5 class="mb-1 counter" data-target="45">0</h5>
+            <p class="mb-0 small stats-text">Qualified Teachers</p>
+          </div>
+        </div>
+        
+        <!-- Form One -->
+        <div class="col-6 col-md-4 col-lg-2">
+          <div class="p-3 rounded-3 stats-block h-100" style="background-color: rgba(255,255,255,0.1);">
+            <i class="fas fa-user-graduate fa-2x mb-3" style="color: #9dfcc0;"></i>
+            <h5 class="mb-1 counter" data-target="120">0</h5>
+            <p class="mb-0 small stats-text">Form One</p>
+          </div>
+        </div>
+        
+        <!-- Form Two -->
+        <div class="col-6 col-md-4 col-lg-2">
+          <div class="p-3 rounded-3 stats-block h-100" style="background-color: rgba(255,255,255,0.1);">
+            <i class="fas fa-user-graduate fa-2x mb-3" style="color: #9dfcc0;"></i>
+            <h5 class="mb-1 counter" data-target="115">0</h5>
+            <p class="mb-0 small stats-text">Form Two</p>
+          </div>
+        </div>
+        
+        <!-- Form Three -->
+        <div class="col-6 col-md-4 col-lg-2">
+          <div class="p-3 rounded-3 stats-block h-100" style="background-color: rgba(255,255,255,0.1);">
+            <i class="fas fa-user-graduate fa-2x mb-3" style="color: #9dfcc0;"></i>
+            <h5 class="mb-1 counter" data-target="105">0</h5>
+            <p class="mb-0 small stats-text">Form Three</p>
+          </div>
+        </div>
+        
+        <!-- Form Four -->
+        <div class="col-6 col-md-4 col-lg-2">
+          <div class="p-3 rounded-3 stats-block h-100" style="background-color: rgba(255,255,255,0.1);">
+            <i class="fas fa-user-graduate fa-2x mb-3" style="color: #9dfcc0;"></i>
+            <h5 class="mb-1 counter" data-target="98">0</h5>
+            <p class="mb-0 small stats-text">Form Four</p>
+          </div>
+        </div>
+        
+        <!-- Total Students -->
+        <div class="col-6 col-md-4 col-lg-2">
+          <div class="p-3 rounded-3 stats-block h-100" style="background-color: rgba(157, 252, 192, 0.2);">
+            <i class="fas fa-users fa-2x mb-3" style="color: #9dfcc0;"></i>
+            <h5 class="mb-1 counter" data-target="438">0</h5>
+            <p class="mb-0 small stats-text">Total Students</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  // Enhanced number counting animation
+  document.addEventListener('DOMContentLoaded', function() {
+    const startAnimation = (counter) => {
+      const target = +counter.getAttribute('data-target');
+      const duration = 2000; // 2 seconds
+      const startTime = performance.now();
+      
+      const updateCount = (currentTime) => {
+        const elapsedTime = currentTime - startTime;
+        const progress = Math.min(elapsedTime / duration, 1);
+        const value = Math.floor(progress * target);
+        
+        counter.textContent = value.toLocaleString();
+        
+        if (progress < 1) {
+          requestAnimationFrame(updateCount);
+        }
+      };
+      
+      requestAnimationFrame(updateCount);
+    };
+    
+    // Intersection Observer setup
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          startAnimation(entry.target);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+    
+    document.querySelectorAll('.counter').forEach(counter => {
+      observer.observe(counter);
+    });
+  });
+</script>
 <!-- Footer -->
 <div class="footer bg-light w-100">
-  <div class="container">
-    <div class="row justify-content-md-center justify-content-lg-between text-md-start">
+  <div class="wide-container">  <!-- Changed from container to wide-container -->
+    <div class="row g-4">  <!-- Added g-4 for consistent gutter spacing -->
       <!-- Contact Column -->
-      <div class="col-12 col-md-4 mb-4 mb-md-0 text-md-start text-lg-start pe-md-4">
-        <h6>Contact Information</h6>
+      <div class="col-12 col-md-6 col-lg-3 mb-4 mb-md-0">
+        <h6 class="fw-bold">Contact Information</h6>
         <p><i class="fa fa-map-marker-alt text-primary me-2"></i> P.O. Box 123, Tarime, Tanzania</p>
         <p><i class="fa fa-phone text-primary me-2"></i> +255 755 405 492</p>
         <p><i class="fa fa-envelope text-primary me-2"></i> info@djcss.com</p>
       </div>
       
       <!-- Quick Links Column -->
-      <div class="col-12 col-md-4 mb-4 mb-md-0 text-md-start px-md-4">
-        <h6>Quick Links</h6>
+      <div class="col-12 col-md-6 col-lg-3 mb-4 mb-md-0">
+        <h6 class="fw-bold">Quick Links</h6>
         <p><a href="#" class="text-decoration-none"><i class="fa fa-angle-right me-2"></i>Home</a></p>
         <p><a href="#" class="text-decoration-none"><i class="fa fa-angle-right me-2"></i>About Us</a></p>
         <p><a href="#" class="text-decoration-none"><i class="fa fa-angle-right me-2"></i>Academics</a></p>
         <p><a href="#" class="text-decoration-none"><i class="fa fa-angle-right me-2"></i>Admissions</a></p>
       </div>
       
+      <!-- School Info Column -->
+      <div class="col-12 col-md-6 col-lg-3 mb-4 mb-md-0">
+        <div class="d-flex align-items-center mb-3">
+          <img src="https://drjohnchachasecondary.org/images/assets/djcss-logo.png" 
+               alt="School Logo" 
+               class="img-fluid" 
+               style="height: 80px; margin-right: 12px;">
+          <div>
+            <h6 class="mb-0 fw-bold" style="color: #6404a0;">Dr. John Chacha</h6>
+            <small class="school-motto" style="font-style: italic;">Learning for Leading</small>
+          </div>
+        </div>
+        <p class="small">
+          A premier educational institution committed to <br> excellence in academics and character formation.
+        </p>
+      </div>
+      
       <!-- Connect Column -->
-      <div class="col-12 col-md-4 text-md-start ps-md-4">
-        <h6>Connect With Us</h6>
+      <div class="col-12 col-md-6 col-lg-3">
+        <h6 class="fw-bold">Connect With Us</h6>
         <div class="social-icons mb-3">
           <a href="#" class="text-decoration-none me-3"><i class="fab fa-facebook-f fa-lg text-primary"></i></a>
           <a href="#" class="text-decoration-none me-3"><i class="fab fa-twitter fa-lg text-info"></i></a>
@@ -698,8 +840,8 @@
         <small class="text-muted">© <span id="year"></span> Dr. John Chacha Secondary School. All Rights Reserved.</small>
       </div>
     </div>
-    <hr class="my-3">
-    <div class="text-center py-3">
+    <hr class="my-4">
+    <div class="text-center py-2">
       <small>Designed with <i class="fa fa-heart text-danger"></i> by Deus</small>
     </div>
   </div>
