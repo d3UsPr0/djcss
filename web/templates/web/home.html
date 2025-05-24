@@ -74,8 +74,26 @@
       box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
       border-radius: 8px;
       margin-top: 0.2rem !important;
+      text-align: center;
+      background-color: rgba(255, 255, 255, 0.98);
       /* Reduced space above dropdown */
     }
+    .navbar-wrapper.sticky .dropdown-item {
+      color: white !important;
+  }
+    .dropdown-item {
+      padding: 8px 16px;
+      transition: all 0.2s ease;
+  }
+  .dropdown-item:hover, .dropdown-item:focus {
+    background-color: #f0f0f0; /* Light gray on hover */
+    color: #6404a0 !important;
+}
+.navbar-wrapper.sticky .dropdown-item:hover,
+.navbar-wrapper.sticky .dropdown-item:focus {
+    background-color: rgba(255, 255, 255, 0.15); /* Slightly lighter purple */
+    color: white !important;
+}
 
     /* Sticky Navbar State */
     .navbar-wrapper.sticky .navbar {
@@ -150,9 +168,14 @@
 
     /* Ensure dropdown items also have white text */
     .navbar-wrapper.sticky .navbar .dropdown-menu a {
-      color: #000 !important;
+      color: white !important;
       /* Keep dropdown items black (or set to white if needed) */
     }
+
+    .navbar-wrapper.sticky .dropdown-menu {
+      background-color: rgba(100, 4, 160, 0.98);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+  }
 
     /* Optional: Change hover effects in sticky state */
     .navbar-wrapper.sticky .navbar .nav-link:hover {
@@ -178,6 +201,65 @@
       justify-content: center;
       transition: all 0.3s ease;
     }
+    /* Center align the collapsed menu items */
+@media (max-width: 991.98px) { /* Bootstrap's lg breakpoint */
+    #navbarNav {
+        text-align: center;
+    }
+    
+    .navbar-collapse {
+        padding: 1rem 0;
+    }
+    
+    .navbar-nav {
+        width: 100%;
+    }
+    .dropdown-item {
+      text-align: center !important;
+  }
+    
+    .nav-item {
+        margin: 0.5rem 0;
+    }
+    
+    .dropdown-menu {
+      background-color: rgba(255, 255, 255, 0.98) !important;
+      margin: 0.5rem auto !important;
+      width: 80%;
+    }
+    
+    /* Center the toggle button */
+    .navbar-toggler {
+        display: block;
+        margin: 0 auto;
+    }
+    /* Sticky state mobile */
+    .navbar-wrapper.sticky .dropdown-menu {
+        background-color: rgba(100, 4, 160, 0.98) !important;
+    }
+    .navbar-wrapper.sticky .dropdown-item {
+      color: white !important;
+  }
+  
+  .navbar-wrapper.sticky .dropdown-item:hover {
+      background-color: rgba(255, 255, 255, 0.15) !important;
+  }
+    
+    /* Ensure dropdown items are properly centered */
+    .dropdown-menu li {
+        text-align: center;
+    }
+}
+
+@media (max-width: 991.98px) {
+  .navbar-custom {
+      background-color: white !important;
+  }
+  
+  .navbar-wrapper.sticky .navbar-custom {
+      background-color: #6404a0 !important;
+  }
+}
 
     /* Initial state: fit content */
     .navbar-wrapper .navbar {
@@ -345,6 +427,7 @@
     .footer {
       background-color: #f8f9fa;
       border-top: 1px solid #e9ecef;
+      font-size: 1rem;
     }
 
     /* For dark footer option */
@@ -356,6 +439,38 @@
     .dark-footer a {
       color: #ddd;
     }
+    .dark-footer a:hover {
+      color: #ddd !important; /* Lighter hover for dark footer */
+  }
+
+    .footer h6 {
+      font-size: 1.1rem; /* Slightly larger for headings */
+      margin-bottom: 1rem;
+  }
+
+  .footer p,
+.footer a,
+.footer small,
+.footer .social-icons,
+.footer .school-motto {
+    font-size: 1rem !important; /* Force same size as body cards */
+    line-height: 1.6; /* Improve readability */
+}
+
+.footer .small {
+  font-size: 0.9rem !important; /* Slightly smaller for fine print */
+}
+/* Ensure all links have consistent styling */
+.footer a {
+    color: inherit; /* Inherit footer text color */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer a:hover {
+  color: #6404a0; /* Your brand purple */
+  text-decoration: underline;
+}
 
     .dark-footer hr {
       border-color: rgba(255, 255, 255, 0.1);
@@ -370,7 +485,49 @@
     .footer .fa {
       margin-right: 10px;
     }
+    /* Designer link styling */
+.designer-link {
+    color: #6404a0 !important;
+    text-decoration: none !important;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
 
+.designer-link:hover {
+    color: #6404a0 !important;
+    opacity: 0.8;
+}
+
+/* For dark footer version */
+.dark-footer .designer-link {
+    color: #c792ea !important;
+}
+
+.dark-footer .designer-link:hover {
+    color: #d6b1f6 !important;
+}
+
+/* Footer designer credit line */
+.footer .designer-credit-line {
+    font-size: 0.8rem !important; /* Half of 1rem base size */
+    line-height: 1.3;
+    display: block;
+    margin-top: 0.5rem;
+}
+.footer .designer-credit-line a {
+  color: #6404a0 !important;
+  text-decoration: none !important;
+  font-weight: 600;
+  font-size: 0.8rem !important;
+}
+.footer .designer-credit-line a:hover {
+  opacity: 0.8;
+}
+
+/* Dark footer version */
+.dark-footer .designer-credit-line a {
+  color: #c792ea !important;
+}
     .rounded-img {
       width: 15vw;
       /* 15% of the viewport width */
@@ -440,13 +597,13 @@
   <!-- Navigation -->
   <div class="navbar-wrapper" id="navbarWrapper">
     <nav class="navbar navbar-expand-lg shadow-bg navbar-light navbar-custom py-2">
-      <div class="container">
+      <div class="container-fluid">
         <button class="navbar-toggler mx-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
           aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav mx-auto">
+        <div class="collapse navbar-collapse justify-content-center"id="navbarNav">
+          <ul class="navbar-nav text-center">
             <li class="nav-item px-2"><a class="nav-link" href="#">Home</a></li>
             <li class="nav-item px-2 dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="aboutDropdown" role="button" data-bs-toggle="dropdown"
@@ -798,13 +955,14 @@
             <div class="d-flex align-items-center mb-3">
               <img src="https://drjohnchachasecondary.org/images/assets/djcss-logo.png" alt="School Logo"
                 class="img-fluid" style="height: 80px; margin-right: 12px;">
-              <div>
-                <h6 class="mb-0 fw-bold" style="color: #6404a0;">Dr. John Chacha</h6>
-                <small class="school-motto" style="font-style: italic;">Learning for Leading</small>
-              </div>
+              
             </div>
-            <p class="small">
-              A premier educational institution committed to excellence in academics and character formation.
+            <div>
+              <h6 class="mb-0 fw-bold" style="color: #6404a0;">Dr. John Chacha Secondary</h6>
+              <small class="school-motto" style="font-style: italic;">Learning for Leading</small>
+            </div>
+            <p>
+              Since 2017
             </p>
           </div>
 
@@ -818,7 +976,7 @@
               <a href="#" class="text-decoration-none"><i class="fab fa-youtube fa-lg text-danger"></i></a>
             </div>
             <p class="small">
-              <i class="fa fa-clock me-2"></i> Office Hours: Mon-Fri, 8:00 AM - 4:00 PM
+              <i class="fa fa-clock me-2"></i> Office Hours: Mon-Fri,<br> 8:00 AM - 4:00 PM
             </p>
             <small class="text-muted">© <span id="year"></span> Dr. John Chacha Secondary School. All Rights
               Reserved.</small>
@@ -826,8 +984,8 @@
         </div>
         <hr class="my-4">
         <div class="text-center py-2">
-          <small>Designed with <i class="fa fa-heart text-danger"></i> by Deus</small>
-        </div>
+          <small class="designer-credit-line">Designed with <i class="fa fa-heart text-danger"></i>by <a href="#">Deus</a></small>
+      </div>
       </div>
     </div>
     <script>
