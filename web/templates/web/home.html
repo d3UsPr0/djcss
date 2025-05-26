@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,536 +16,17 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
 
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+  <link rel="stylesheet" type="text/css" href="{% static "web/css/style.css" %}" />
 
+ 
+
+  <link rel="stylesheet" href="/static/css/style.css">
   <style>
-    body {
-      font-family: "DM Sans", sans-serif;
-      background-color: rgb(238, 246, 254);
-    }
-
-    .school-logo {
-      height: 80px;
-    }
-
-    /* School Header Styling */
-    .school-header {
-      background: linear-gradient(to right, rgba(100, 4, 160, 0.1), rgba(255, 255, 255, 0.8), rgba(100, 4, 160, 0.1));
-      padding-bottom: 0.5rem !important;
-      /* Reduced vertical space */
-    }
-
-    .school-title {
-      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
-      font-weight: 700;
-    }
-
-    .school-motto {
-      font-family: "Garamond", serif;
-      font-style: italic;
-      font-weight: 500;
-    }
-
-    /* Navigation Menu Styling */
-    .navbar-custom {
-      box-shadow: 0 1px 0px rgba(0, 0, 0, 0.1);
-      padding-top: 0.2rem !important;
-      /* Reduced from 0.3rem */
-      padding-bottom: 0.2rem !important;
-      /* Reduced from 0.3rem */
-    }
-
-    .nav-link {
-      font-weight: 500;
-      color: #333 !important;
-      transition: all 0.3s ease;
-      padding: 6px 12px !important;
-      /* Reduced from 8px 15px */
-      font-size: 0.9rem !important;
-      /* Slightly smaller font */
-      position: relative;
-    }
-
-    .nav-link:hover {
-      color: #6404a0 !important;
-    }
-
-
-    .dropdown-menu {
-      border: none;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-      border-radius: 8px;
-      margin-top: 0.2rem !important;
-      text-align: center;
-      background-color: rgba(255, 255, 255, 0.98);
-      /* Reduced space above dropdown */
-    }
-    .navbar-wrapper.sticky .dropdown-item {
-      color: white !important;
-  }
-    .dropdown-item {
-      padding: 8px 16px;
-      transition: all 0.2s ease;
-  }
-  .dropdown-item:hover, .dropdown-item:focus {
-    background-color: #f0f0f0; /* Light gray on hover */
-    color: #6404a0 !important;
-}
-.navbar-wrapper.sticky .dropdown-item:hover,
-.navbar-wrapper.sticky .dropdown-item:focus {
-    background-color: rgba(255, 255, 255, 0.15); /* Slightly lighter purple */
-    color: white !important;
-}
-
-    /* Sticky Navbar State */
-    .navbar-wrapper.sticky .navbar {
-      background: #6404a0 !important;
-      box-shadow: 0 5px 20px rgba(100, 4, 160, 0.3);
-
-    }
-
-    .navbar-wrapper.sticky .nav-link {
-      color: white !important;
-
-    }
-
-    .news-img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-      border-radius: 8px;
-    }
-
     .rounded-img {
-      width: 120px;
-      height: 120px;
+      width: 100px;
+      height: 100px;
       object-fit: cover;
       border-radius: 50%;
-      margin-bottom: 1rem;
-    }
-
-    .card-header-custom {
-      background: #6404a0;
-      color: rgb(255, 255, 255);
-      font-weight: bold;
-      font-size: 1.1rem;
-      border-top-left-radius: 0.5rem;
-      border-top-right-radius: 0.5rem;
-      border: none;
-    }
-
-    .navbar-wrapper.sticky .navbar-toggler-icon {
-      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='white' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
-    }
-
-    .navbar-toggler {
-      padding: 0.25rem 0.5rem !important;
-      font-size: 1rem !important;
-      border: 0 !important;
-      /* Removes border */
-      border-radius: 0 !important;
-      /* Removes rounding */
-      box-shadow: none !important;
-      /* Removes any shadow */
-      margin: 0 auto;
-      /* Center the toggler */
-    }
-
-    /* Remove focus outline */
-    .navbar-toggler:focus {
-      outline: none !important;
-      box-shadow: none !important;
-    }
-
-    .navbar-wrapper.sticky .navbar .dropdown-menu a {
-      color: white !important;
-    }
-
-    /* Force white text in sticky state */
-    .navbar-wrapper.sticky .navbar .nav-link,
-    .navbar-wrapper.sticky .navbar .dropdown-toggle {
-      color: white !important;
-      /* Override any other color */
-    }
-
-    /* Ensure dropdown items also have white text */
-    .navbar-wrapper.sticky .navbar .dropdown-menu a {
-      color: white !important;
-      /* Keep dropdown items black (or set to white if needed) */
-    }
-
-    .navbar-wrapper.sticky .dropdown-menu {
-      background-color: rgba(100, 4, 160, 0.98);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-  }
-
-    /* Optional: Change hover effects in sticky state */
-    .navbar-wrapper.sticky .navbar .nav-link:hover {
-      color: #ddd !important;
-      /* Slightly lighter on hover */
-    }
-
-    .wide-container {
-      width: 90%;
-      max-width: 100%;
-      margin: 0 auto;
-    }
-
-    .top-bar {
-      background: #6404a0;
-      padding: 5px 0;
-      font-size: 14px;
-      color: white;
-    }
-
-    .navbar-wrapper {
-      display: flex;
-      justify-content: center;
-      transition: all 0.3s ease;
-    }
-    /* Center align the collapsed menu items */
-@media (max-width: 991.98px) { /* Bootstrap's lg breakpoint */
-    #navbarNav {
-        text-align: center;
-    }
-    
-    .navbar-collapse {
-        padding: 1rem 0;
-    }
-    
-    .navbar-nav {
-        width: 100%;
-    }
-    .dropdown-item {
-      text-align: center !important;
-  }
-    
-    .nav-item {
-        margin: 0.5rem 0;
-    }
-    
-    .dropdown-menu {
-      background-color: rgba(255, 255, 255, 0.98) !important;
-      margin: 0.5rem auto !important;
-      width: 80%;
-    }
-    
-    /* Center the toggle button */
-    .navbar-toggler {
-        display: block;
-        margin: 0 auto;
-    }
-    /* Sticky state mobile */
-    .navbar-wrapper.sticky .dropdown-menu {
-        background-color: rgba(100, 4, 160, 0.98) !important;
-    }
-    .navbar-wrapper.sticky .dropdown-item {
-      color: white !important;
-  }
-  
-  .navbar-wrapper.sticky .dropdown-item:hover {
-      background-color: rgba(255, 255, 255, 0.15) !important;
-  }
-    
-    /* Ensure dropdown items are properly centered */
-    .dropdown-menu li {
-        text-align: center;
-    }
-}
-
-@media (max-width: 991.98px) {
-  .navbar-custom {
-      background-color: white !important;
-  }
-  
-  .navbar-wrapper.sticky .navbar-custom {
-      background-color: #6404a0 !important;
-  }
-}
-
-    /* Initial state: fit content */
-    .navbar-wrapper .navbar {
-      width: auto;
-      border-radius: 8px;
-      padding: 0.3rem 1rem;
-      transition: all 0.3s ease;
-    }
-
-    /* Scrolled state: full width and sticks */
-    .navbar-wrapper.sticky .navbar {
-      margin-top: 0;
-      width: 100%;
-      border-radius: 0;
-      position: fixed;
-      top: 0;
-      left: 0;
-      z-index: 1030;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      background: #6404a0;
-    }
-
-    .carousel-inner img {
-      max-height: 500px;
-      /* or any height you prefer */
-      object-fit: cover;
-      width: 100%;
-      border-radius: 8px;
-    }
-
-    .navbar-custom {
-      margin-top: 15px;
-      transition: box-shadow 0.3s ease-in-out;
-      padding-top: 0.3rem;
-      padding-bottom: 0.3rem;
-    }
-
-    .navbar-rounded {
-      border-radius: 8px;
-      border: 1px solid #ccc;
-      background-color: #e9ecef;
-    }
-
-    .nav-link {
-      padding-top: 0.2rem;
-      padding-bottom: 0.2rem;
-      font-size: 0.95rem;
-      /* Optional: slightly reduce font size */
-    }
-
-    /* Show dropdown on hover */
-    .nav-item.dropdown:hover .dropdown-menu {
-      display: block;
-      margin-top: 0;
-      /* Align properly */
-    }
-
-    .sticky-top {
-      z-index: 1030;
-      /* Ensure it's above other content */
-      background-color: #e9ecef;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    }
-
-    .carousel-caption {
-      background: rgba(0, 0, 0, 0.5);
-      padding: 5px;
-    }
-
-    .section-title {
-      border-bottom: 2px solid #ccc;
-      margin-bottom: 15px;
-      padding-bottom: 5px;
-      font-weight: bold;
-    }
-
-    /* Vertical Marquee Animation */
-    .marquee-vertical {
-      position: absolute;
-      width: 100%;
-      animation: marqueeVertical 25s linear infinite;
-    }
-
-    @keyframes marqueeVertical {
-      0% {
-        transform: translateY(0);
-      }
-
-      100% {
-        transform: translateY(calc(-100% + 200px));
-        /* Adjust based on container height */
-      }
-    }
-
-    .marquee-vertical {
-      position: absolute;
-      width: 100%;
-      animation: marqueeVertical 30s linear infinite;
-      /* Updated to match JavaScript */
-    }
-
-    /* Pause on hover */
-    .card-body:hover .marquee-vertical {
-      animation-play-state: paused;
-    }
-
-    /* Program list styling */
-    .program-list li {
-      padding-left: 15px;
-      padding-right: 15px;
-    }
-
-    /* Custom icon colors */
-    .text-purple {
-      color: #6f42c1;
-    }
-
-    /* Announcement list styling */
-    .announcement-list li {
-      padding-left: 5px;
-      border-left: 3px solid #e9ecef;
-      transition: all 0.3s ease;
-    }
-
-    .announcement-list li:hover {
-      border-left-color: #6404a0;
-      background-color: #f8f9fa;
-    }
-
-
-    /* Program list styling */
-    .program-list li {
-      padding-left: 5px;
-    }
-
-    /* Adjust marquee spacing */
-    .marquee-vertical ul {
-      padding-left: 0;
-    }
-
-    /* Stats block animations */
-    .stats-block {
-      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
-      border: 2px solid transparent;
-    }
-
-    .stats-block:hover {
-      transform: translateY(-8px) scale(1.03);
-      border-color: rgba(157, 252, 192, 0.3);
-      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
-      background-color: rgba(255, 255, 255, 0.15) !important;
-    }
-
-    /* Counter animation */
-    .counter {
-      font-weight: 700;
-      letter-spacing: 1px;
-      color: #6404a0;
-    }
-
-    .stats-text {
-      color: #6404a0;
-    }
-
-    .footer {
-      background-color: #f8f9fa;
-      border-top: 1px solid #e9ecef;
-      font-size: 1rem;
-    }
-
-    /* For dark footer option */
-    .dark-footer {
-      background-color: #6404a0;
-      color: white;
-    }
-
-    .dark-footer a {
-      color: #ddd;
-    }
-    .dark-footer a:hover {
-      color: #ddd !important; /* Lighter hover for dark footer */
-  }
-
-    .footer h6 {
-      font-size: 1.1rem; /* Slightly larger for headings */
-      margin-bottom: 1rem;
-  }
-
-  .footer p,
-.footer a,
-.footer small,
-.footer .social-icons,
-.footer .school-motto {
-    font-size: 1rem !important; /* Force same size as body cards */
-    line-height: 1.6; /* Improve readability */
-}
-
-.footer .small {
-  font-size: 0.9rem !important; /* Slightly smaller for fine print */
-}
-/* Ensure all links have consistent styling */
-.footer a {
-    color: inherit; /* Inherit footer text color */
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-.footer a:hover {
-  color: #6404a0; /* Your brand purple */
-  text-decoration: underline;
-}
-
-    .dark-footer hr {
-      border-color: rgba(255, 255, 255, 0.1);
-    }
-
-    .footer {
-      background-color: #f1f1f1;
-      padding: 30px 0;
-      font-size: 14px;
-    }
-
-    .footer .fa {
-      margin-right: 10px;
-    }
-    /* Designer link styling */
-.designer-link {
-    color: #6404a0 !important;
-    text-decoration: none !important;
-    font-weight: 600;
-    transition: all 0.3s ease;
-}
-
-.designer-link:hover {
-    color: #6404a0 !important;
-    opacity: 0.8;
-}
-
-/* For dark footer version */
-.dark-footer .designer-link {
-    color: #c792ea !important;
-}
-
-.dark-footer .designer-link:hover {
-    color: #d6b1f6 !important;
-}
-
-/* Footer designer credit line */
-.footer .designer-credit-line {
-    font-size: 0.8rem !important; /* Half of 1rem base size */
-    line-height: 1.3;
-    display: block;
-    margin-top: 0.5rem;
-}
-.footer .designer-credit-line a {
-  color: #6404a0 !important;
-  text-decoration: none !important;
-  font-weight: 600;
-  font-size: 0.8rem !important;
-}
-.footer .designer-credit-line a:hover {
-  opacity: 0.8;
-}
-
-/* Dark footer version */
-.dark-footer .designer-credit-line a {
-  color: #c792ea !important;
-}
-    .rounded-img {
-      width: 15vw;
-      /* 15% of the viewport width */
-      height: 15vw;
-      max-width: 100px;
-      max-height: 100px;
-      border-radius: 50%;
-      object-fit: cover;
-    }
-
-    .star-divider {
-      border: none;
-      border-top: 2px solid #6404a0;
-      margin: 10px 0;
-      width: 90%;
-      margin-left: auto;
-      margin-right: auto;
     }
   </style>
 </head>
@@ -553,14 +35,14 @@
   <!-- Top Bar -->
   <div class="top-bar d-none d-md-block">
     <div class="container d-flex justify-content-between" style="max-width: 90%">
-      <div>
-        <i class="fa fa-envelope me-1"></i> info@djcss.com &nbsp; | &nbsp;
-        <i class="fa fa-phone me-1"></i> +255755405492
+      <div class="text-white">
+        <i class="fa fa-envelope me-1 text-white"></i> info@djcss.com &nbsp; | &nbsp;
+        <i class="fa fa-phone me-1 text-white"></i> +255755405492
       </div>
       <div>
-        <a href="#" class="me-2"><i class="fa fa-globe me-1"></i>English</a>
-        <a href="#" class="me-2">FAQ</a>
-        <a href="#">Contact</a>
+        <a href="#" class="me-2 text-white text-decoration-none"><i class="fa fa-globe me-1 text-white"></i>English</a>
+        <a href="#" class="me-2 text-white text-decoration-none">FAQ</a>
+        <a href="#" class="text-white text-decoration-none">Contact</a>
       </div>
     </div>
   </div>
@@ -576,11 +58,11 @@
 
       <!-- Centered Title and Motto -->
       <div class="text-center flex-grow-1">
-        <h1 class="mb-1 school-title" style="color: #6404a0;">
+        <h1 class="mb-1 school-title" style="color: #6f42c1;">
           Dr. John Chacha Secondary School
         </h1>
         <small class="school-motto" style="font-size: 1.1rem; letter-spacing: 1.5px; color: #555;">
-          <span style="border-bottom: 2px solid #6404a0; padding-bottom: 3px;">
+          <span style="border-bottom: 2px solid #6f42c1; padding-bottom: 3px;">
             Learning for Leading
           </span>
         </small>
@@ -604,9 +86,9 @@
         </button>
         <div class="collapse navbar-collapse justify-content-center"id="navbarNav">
           <ul class="navbar-nav text-center">
-            <li class="nav-item px-2"><a class="nav-link" href="#">Home</a></li>
+            <li class="nav-item px-2"><a class="nav-link fw-bold" href="#">Home</a></li>
             <li class="nav-item px-2 dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="aboutDropdown" role="button" data-bs-toggle="dropdown"
+              <a class="nav-link dropdown-toggle fw-bold" href="#" id="aboutDropdown" role="button" data-bs-toggle="dropdown"
                 aria-expanded="false">About Us</a>
               <ul class="dropdown-menu" aria-labelledby="aboutDropdown">
                 <li><a class="dropdown-item" href="#">Who We Are</a></li>
@@ -614,10 +96,10 @@
                 <li><a class="dropdown-item" href="#">Vision</a></li>
               </ul>
             </li>
-            <li class="nav-item px-2"><a class="nav-link" href="#">Academics</a></li>
-            <li class="nav-item px-2"><a class="nav-link" href="#">Admissions</a></li>
+            <li class="nav-item px-2"><a class="nav-link fw-bold" href="#">Academics</a></li>
+            <li class="nav-item px-2"><a class="nav-link fw-bold" href="#">Admissions</a></li>
             <li class="nav-item px-2 dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="aboutDropdown" role="button" data-bs-toggle="dropdown"
+              <a class="nav-link dropdown-toggle fw-bold" href="#" id="aboutDropdown" role="button" data-bs-toggle="dropdown"
                 aria-expanded="false">Media</a>
               <ul class="dropdown-menu" aria-labelledby="aboutDropdown">
                 <li><a class="dropdown-item" href="#">Gallery</a></li>
@@ -625,7 +107,7 @@
                 <li><a class="dropdown-item" href="#">News</a></li>
               </ul>
             </li>
-            <li class="nav-item px-2"><a class="nav-link" href="#">Contact</a></li>
+            <li class="nav-item px-2"><a class="nav-link fw-bold" href="#">Contact</a></li>
           </ul>
         </div>
       </div>
@@ -675,20 +157,24 @@
               <div class="col-md-4">
                 <img src="https://drjohnchachasecondary.org/images/assets/tour.jpg" alt="News 1" class="news-img" />
                 <h6 class="mt-2 mb-1">
-                  Annual Science Fair Winners Announced
+                  <a href="#" class="news-heading-link text-decoration-none">Annual Science Fair Winners Announced </a>
                 </h6>
                 <small class="text-muted"><i class="bi bi-calendar"></i> May 15, 2023</small>
               </div>
               <div class="col-md-4">
                 <img src="https://images.unsplash.com/photo-1509021436665-8f07dbf5bf1d?q=80&w=400" alt="News 2"
                   class="news-img" />
-                <h6 class="mt-2 mb-1">School Team Reaches Regional Finals</h6>
+                  <h6 class="mt-2 mb-1">
+                    <a href="#" class="news-heading-link text-decoration-none">School Team Reaches Regional Finals</a>
+                  </h6>
                 <small class="text-muted"><i class="bi bi-calendar"></i> May 10, 2023</small>
               </div>
               <div class="col-md-4">
                 <img src="https://drjohnchachasecondary.org/images/assets/computerlab.jpg" alt="News 3"
                   class="news-img" />
-                <h6 class="mt-2 mb-1">New Computer Lab Opening Next Month</h6>
+                  <h6 class="mt-2 mb-1">
+                    <a href="#" class="news-heading-link text-decoration-none">New Computer Lab Opening Next Month</a>
+                  </h6>
                 <small class="text-muted"><i class="bi bi-calendar"></i> May 5, 2023</small>
               </div>
             </div>
@@ -707,18 +193,33 @@
             Staff Profiles
           </div>
           <div class="card-body">
-            <div class="d-flex align-items-center mb-2">
-              <img src="https://via.placeholder.com/40" class="rounded-img me-2" alt="" />
-              <div>Name - Title</div>
+            <!-- Staff Member 1 -->
+            <div class="d-flex align-items-center mb-3">
+              <img src="{% static "web/staff/Baraka.jpg" %}" class="rounded-img me-3" alt="" />
+              <div>
+                <div class="fw-bold">Lauliani Ernest</div>
+                <div class="text-muted small">Deputy Headmaster</div>
+              </div>
             </div>
-            <div class="d-flex align-items-center mb-2">
-              <img src="https://via.placeholder.com/40" class="rounded-img me-2" alt="" />
-              <div>Name - Title</div>
+          
+            <!-- Staff Member 2 -->
+            <div class="d-flex align-items-center mb-3">
+              <img src="https://via.placeholder.com/40" class="rounded-img me-3" alt="" />
+              <div>
+                <div class="fw-bold">Baraka Mswaya</div>
+                <div class="text-muted small">Academic Master</div>
+              </div>
             </div>
-            <div class="d-flex align-items-center mb-2">
-              <img src="https://via.placeholder.com/40" class="rounded-img me-2" alt="" />
-              <div>Name - Title</div>
+          
+            <!-- Staff Member 3 -->
+            <div class="d-flex align-items-center mb-3">
+              <img src="https://via.placeholder.com/40" class="rounded-img me-3" alt="" />
+              <div>
+                <div class="fw-bold">Sunday Lyimo</div>
+                <div class="text-muted small">School Bursar</div>
+              </div>
             </div>
+          
             <a href="#" class="btn btn-outline-success btn-sm">
               <i class="fas fa-list me-1"></i> All Staff Profiles
             </a>
@@ -731,16 +232,28 @@
           <div class="card-body">
             <ul class="list-unstyled announcement-list">
               <li class="mb-3">
-                <i class="fas fa-bullhorn text-primary me-2"></i>
-                <strong>School Closure</strong> - May 25th (Holiday)
+                <a href="#" class="text-decoration-none text-dark">
+                  <i class="fas fa-bullhorn text-primary me-2"></i>
+                  <strong>School Closure</strong> - May 25th (Holiday)
+                </a>
               </li>
               <li class="mb-3">
-                <i class="fas fa-calendar-check text-success me-2"></i>
-                <strong>Exam Schedule</strong> - Posted on notice board
+                <a href="#" class="text-decoration-none text-dark">
+                  <i class="fas fa-calendar-check text-success me-2"></i>
+                  <strong>Exam Schedule</strong> - Posted on notice board
+                </a>
               </li>
               <li class="mb-3">
-                <i class="fas fa-trophy text-warning me-2"></i>
-                <strong>Sports Day</strong> - June 1st at 9 AM
+                <a href="#" class="text-decoration-none text-dark">
+                  <i class="fas fa-trophy text-warning me-2"></i>
+                  <strong>Sports Day</strong> - June 1st at 9 AM
+                </a>
+              </li>
+              <li class="mb-3">
+                <a href="#" class="text-decoration-none text-dark">
+                  <i class="fas fa-calendar-check text-success me-2"></i>
+                  <strong>Parents Meeting</strong> - Posted on notice board
+                </a>
               </li>
             </ul>
             <a href="#" class="btn btn-outline-success btn-sm">
@@ -958,7 +471,7 @@
               
             </div>
             <div>
-              <h6 class="mb-0 fw-bold" style="color: #6404a0;">Dr. John Chacha Secondary</h6>
+              <h6 class="mb-0 fw-bold" style="color: #6f42c1;">Dr. John Chacha Secondary</h6>
               <small class="school-motto" style="font-style: italic;">Learning for Leading</small>
             </div>
             <p>
@@ -976,7 +489,7 @@
               <a href="#" class="text-decoration-none"><i class="fab fa-youtube fa-lg text-danger"></i></a>
             </div>
             <p class="small">
-              <i class="fa fa-clock me-2"></i> Office Hours: Mon-Fri,<br> 8:00 AM - 4:00 PM
+              <i class="fa fa-clock me-2"></i> Office Hours: Mon-Fri, <br> 8:00 AM - 4:00 PM
             </p>
             <small class="text-muted">© <span id="year"></span> Dr. John Chacha Secondary School. All Rights
               Reserved.</small>
