@@ -8,8 +8,45 @@ body {
   background-color: rgb(238, 246, 254);
 }
 
+/* Fow news */
+.news-item {
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.news-item:hover {
+  transform: translateY(-3px);
+}
+
+.news-preview {
+  color: #555;
+  line-height: 1.4;
+}
+
+.news-bulletin li {
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+  transition: all 0.3s ease;
+}
+
+.news-bulletin li:hover {
+  background-color: #f9f9f9;
+}
+
+.news-bulletin li:last-child {
+  border-bottom: none;
+}
+
+.news-content {
+  line-height: 1.8;
+}
+
+.news-content ul {
+  padding-left: 20px;
+}
+
 .school-logo {
-  height: 80px;
+  height:80px;
 }
 
 /* School Header Styling */

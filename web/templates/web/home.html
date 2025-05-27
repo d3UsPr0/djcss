@@ -126,8 +126,98 @@
       </div>
     </div>
   </div>
+<div class="wide-container my-4">
+  <div class="row g-3">
+    <!-- News Read -->
+    <div class="col-md-8 d-flex">
+      <div class="card w-100 shadow-sm border-0">
+        <div class="card-header card-header-custom">Reading on ...</div>
+        <div class="card-body">
+          <!-- News Detail View (shown when news item clicked) -->
+          <div id="newsDetailView">
+            <h4 id="newsDetailTitle" class="mb-3">News title 1 Sample</h4>
+            <img id="newsDetailImage" src="{% static "web/images/computerlab.jpg" %}" class="img-fluid rounded mb-3" alt="News Image">
+            <div id="newsDetailContent" class="news-content">
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nisl eget ultricies tincidunt, nisl nisl aliquam nisl, eget ultricies nisl nisl eget nisl. Nullam auctor, nisl eget ultricies tincidunt, nisl nisl aliquam nisl, eget ultricies nisl nisl eget nisl.</p>
+              <p>Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nullam auctor, nisl eget ultricies tincidunt, nisl nisl aliquam nisl, eget ultricies nisl nisl eget nisl. Nullam auctor, nisl eget ultricies tincidunt, nisl nisl aliquam nisl, eget ultricies nisl nisl eget nisl.</p>
+              <p>Donec euismod, nisl eget ultricies tincidunt, nisl nisl aliquam nisl, eget ultricies nisl nisl eget nisl. Nullam auctor, nisl eget ultricies tincidunt, nisl nisl aliquam nisl, eget ultricies nisl nisl eget nisl.</p>
+              <p>The new state-of-the-art computer lab will be inaugurated on June 1st by the Regional Commissioner. The lab features:</p><ul><li>30 new high-speed computers</li><li>Interactive whiteboard</li><li>High-speed internet connection</li><li>Air conditioning</li></ul><p>This project was funded by the school board and alumni donations. The lab will be open for all students from Form 1 to Form 4.</p>
+            </div>
+            <small class="text-muted" id="newsDetailDate">Published on: May 5, 2023</small>
+          </div>
+        </div>
+      </div>
+    </div>
 
-  <div class="wide-container my-4">
+<!-- News Bulletins -->
+<div class="col-md-4 d-flex">
+  <div class="card w-100 shadow-sm border-0">
+    <div class="card-header card-header-custom">
+      News Bulletins
+    </div>
+    <div class="card-body">
+      <ul class="list-unstyled news-bulletin">
+        <li class="mb-3">
+          <div class="d-flex">
+            <div class="me-3">
+              <i class="fas fa-newspaper text-primary bg-light p-2 rounded-circle"></i>
+            </div>
+            <div>
+              <a href="#" class="text-decoration-none"><h6 class="mb-1">School Reopening Date</h6></a>
+              <p class="small text-muted mb-0">The school will reopen on June 10th for second term</p>
+              <small class="text-muted"><i class="far fa-clock me-1"></i> 2 days ago</small>
+            </div>
+          </div>
+        </li>
+        <li class="mb-3">
+          <div class="d-flex">
+            <div class="me-3">
+              <i class="fas fa-trophy text-warning bg-light p-2 rounded-circle"></i>
+            </div>
+            <div>
+              <a href="#" class="text-decoration-none"><h6 class="mb-1">Sports Day Results</h6></a>
+              <p class="small text-muted mb-0">Blue house emerged winners in the annual sports day</p>
+              <small class="text-muted"><i class="far fa-clock me-1"></i> 1 week ago</small>
+            </div>
+          </div>
+        </li>
+        <li class="mb-3">
+          <div class="d-flex">
+            <div class="me-3">
+              <i class="fas fa-book text-success bg-light p-2 rounded-circle"></i>
+            </div>
+            <div>
+              <a href="#" class="text-decoration-none"><h6 class="mb-1">New Library Books</h6></a>
+              <p class="small text-muted mb-0">200 new books added to the school library collection</p>
+              <small class="text-muted"><i class="far fa-clock me-1"></i> 2 weeks ago</small>
+            </div>
+          </div>
+        </li>
+        <li class="mb-3">
+          <div class="d-flex">
+            <div class="me-3">
+              <i class="fas fa-flask text-info bg-light p-2 rounded-circle"></i>
+            </div>
+            <div>
+              <a href="#" class="text-decoration-none"><h6 class="mb-1">Science Exhibition</h6></a>
+              <p class="small text-muted mb-0">Students to present innovative projects next Friday</p>
+              <small class="text-muted"><i class="far fa-clock me-1"></i> 3 weeks ago</small>
+            </div>
+          </div>
+        </li>
+      </ul>
+      <div class="d-flex justify-content-center">
+        <a href="#" class="btn btn-outline-success btn-sm">
+          <i class="fas fa-list me-1"></i> View All Updates
+        </a>
+      </div>      
+    </div>
+  </div>
+</div>
+  </div>
+</div>
+
+<div class="wide-container my-4">
     <div class="row g-3">
       <!-- Headmaster's Welcome -->
       <div class="col-md-4 d-flex">
@@ -210,16 +300,6 @@
                 <div class="text-muted small">Academic Master</div>
               </div>
             </div>
-          
-            <!-- Staff Member 3 -->
-            <div class="d-flex align-items-center mb-3">
-              <img src="https://via.placeholder.com/40" class="rounded-img me-3" alt="" />
-              <div>
-                <div class="fw-bold">Sunday Lyimo</div>
-                <div class="text-muted small">School Bursar</div>
-              </div>
-            </div>
-          
             <a href="#" class="btn btn-outline-success btn-sm">
               <i class="fas fa-list me-1"></i> All Staff Profiles
             </a>
