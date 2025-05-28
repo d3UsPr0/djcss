@@ -20,11 +20,31 @@
       --site-green: #198754;
       --site-light-bg: rgb(238, 246, 254);
     }
-    
+   
     /* Base Styles */
     body {
       font-family: "DM Sans", sans-serif;
       background-color: var(--site-light-bg);
+    }
+
+    .navbar-toggler {
+      position: relative;
+    }
+    /* Close-icon styles */
+    .close-icon {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 1.25rem;
+      color: #6f42c1; /* Your purple color */
+      padding-top: 4.5rem;
+      padding-bottom: 3rem;
+
+    }
+    
+    .navbar-wrapper.sticky .close-icon {
+      color: white !important;
     }
     
     .wide-container {
@@ -86,7 +106,7 @@
     }
     
     .navbar-custom {
-      box-shadow: 0 1px 0px rgba(0, 0, 0, 0.1);
+      {% comment %} box-shadow: 0 1px 0px rgba(0, 0, 0, 0.1); {% endcomment %}
       padding: 0.2rem 1rem !important;
       margin-top: 15px;
       transition: all 0.3s ease;
@@ -97,8 +117,8 @@
       font-weight: 500;
       color: #333 !important;
       transition: all 0.3s ease;
-      padding: 6px 12px !important;
-      font-size: 0.9rem !important;
+      padding: 6px 8px !important;
+      font-size: 1rem !important;
       position: relative;
     }
     
@@ -109,15 +129,16 @@
     .dropdown-menu {
       border: none;
       box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-      border-radius: 8px;
+      border-radius: 5px;
       margin-top: 0.2rem !important;
       text-align: center;
-      background-color: rgba(255, 255, 255, 0.98);
+      {% comment %} background-color: rgba(255, 255, 255, 0.98); {% endcomment %}
     }
     
     .dropdown-item {
-      padding: 8px 16px;
+      padding: 2px 4px 0px 8px !important;
       transition: all 0.2s ease;
+      text-align: left !important;
     }
     
     .dropdown-item:hover,
@@ -146,6 +167,8 @@
     .navbar-wrapper.sticky .dropdown-menu {
       background-color: rgba(100, 4, 160, 0.98) !important;
       border: 1px solid rgba(255, 255, 255, 0.2);
+      color: white !important;
+      
     }
     
     .navbar-wrapper.sticky .dropdown-item {
@@ -427,6 +450,11 @@
       #navbarNav {
         text-align: center;
       }
+      .navbar-nav .nav-link {
+        line-height: 0.1; /* Adjust this value as needed (default is usually 1.5) */
+        padding: 0.5rem 0; /* Adjust vertical padding */
+        margin: 0.1rem 0; /* Adjust spacing between items */
+      }
     
       .navbar-collapse {
         padding: 1rem 0;
@@ -434,10 +462,13 @@
     
       .navbar-nav {
         width: 100%;
+        
       }
+    
     
       .dropdown-item {
         text-align: center !important;
+        
       }
     
       .nav-item {
@@ -448,6 +479,7 @@
         background-color: rgba(255, 255, 255, 0.98) !important;
         margin: 0.5rem auto !important;
         width: 80%;
+        
       }
     
       .navbar-toggler {
@@ -524,6 +556,7 @@
         <button class="navbar-toggler mx-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
           aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
+          <span class="close-icon d-none"><i class="fas fa-times"></i></span>
         </button>
         <div class="collapse navbar-collapse justify-content-center"id="navbarNav">
           <ul class="navbar-nav text-center">
@@ -1141,6 +1174,41 @@
         window.scrollTo({
           top: 0,
           behavior: "smooth"
+        });
+      });
+    </script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const navbarToggler = document.querySelector('.navbar-toggler');
+        const navbarCollapse = document.getElementById('navbarNav');
+        
+        navbarToggler.addEventListener('click', function() {
+          const isExpanded = navbarCollapse.classList.contains('show');
+          const togglerIcon = this.querySelector('.navbar-toggler-icon');
+          const closeIcon = this.querySelector('.close-icon');
+          
+          if (isExpanded) {
+            togglerIcon.classList.remove('d-none');
+            closeIcon.classList.add('d-none');
+          } else {
+            togglerIcon.classList.add('d-none');
+            closeIcon.classList.remove('d-none');
+          }
+        });
+        
+        // Also handle when collapse happens from other events (like clicking a link)
+        navbarCollapse.addEventListener('hidden.bs.collapse', function() {
+          const togglerIcon = navbarToggler.querySelector('.navbar-toggler-icon');
+          const closeIcon = navbarToggler.querySelector('.close-icon');
+          togglerIcon.classList.remove('d-none');
+          closeIcon.classList.add('d-none');
+        });
+        
+        navbarCollapse.addEventListener('shown.bs.collapse', function() {
+          const togglerIcon = navbarToggler.querySelector('.navbar-toggler-icon');
+          const closeIcon = navbarToggler.querySelector('.close-icon');
+          togglerIcon.classList.add('d-none');
+          closeIcon.classList.remove('d-none');
         });
       });
     </script>
