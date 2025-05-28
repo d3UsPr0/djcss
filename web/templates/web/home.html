@@ -8,25 +8,466 @@
   <title>Dr. John Chacha Secondary School 📚 Learning for Leading</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&display=swap"
-    rel="stylesheet">
-  <!-- Fav Icon -->
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&display=swap" rel="stylesheet">
   <link rel="icon" href="https://drjohnchachasecondary.org/images/assets/djcss-logo.png" type="image/x-icon" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
-
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
   <link rel="stylesheet" type="text/css" href="{% static "web/css/style.css" %}" />
-
- 
-
-  <link rel="stylesheet" href="/static/css/style.css">
+  
   <style>
+    :root {
+      --site-purple: #6f42c1;
+      --site-green: #198754;
+      --site-light-bg: rgb(238, 246, 254);
+    }
+    
+    /* Base Styles */
+    body {
+      font-family: "DM Sans", sans-serif;
+      background-color: var(--site-light-bg);
+    }
+    
+    .wide-container {
+      width: 90%;
+      max-width: 100%;
+      margin: 0 auto;
+    }
+    
+    /* Header & Navigation */
+    .top-bar {
+      background: var(--site-purple);
+      padding: 5px 0;
+      font-size: 14px;
+      color: white;
+    }
+    
+    .top-bar a,
+    .top-bar i {
+      color: white !important;
+      transition: opacity 0.3s ease;
+    }
+    
+    .top-bar a:hover {
+      opacity: 0.8;
+      text-decoration: none !important;
+    }
+    
+    .school-header {
+      background: linear-gradient(
+        to right,
+        rgba(100, 4, 160, 0.1),
+        rgba(255, 255, 255, 0.8),
+        rgba(100, 4, 160, 0.1)
+      );
+      padding-bottom: 0.5rem !important;
+    }
+    
+    .school-title {
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+      font-weight: 700;
+      color: var(--site-purple);
+    }
+    
+    .school-motto {
+      font-family: "Garamond", serif;
+      font-style: italic;
+      font-weight: 500;
+    }
+    
+    .school-logo {
+      height: 80px;
+    }
+    
+    /* Navigation */
+    .navbar-wrapper {
+      display: flex;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+    
+    .navbar-custom {
+      box-shadow: 0 1px 0px rgba(0, 0, 0, 0.1);
+      padding: 0.2rem 1rem !important;
+      margin-top: 15px;
+      transition: all 0.3s ease;
+      background-color: white !important;
+    }
+    
+    .nav-link {
+      font-weight: 500;
+      color: #333 !important;
+      transition: all 0.3s ease;
+      padding: 6px 12px !important;
+      font-size: 0.9rem !important;
+      position: relative;
+    }
+    
+    .nav-link:hover {
+      color: var(--site-purple) !important;
+    }
+    
+    .dropdown-menu {
+      border: none;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      margin-top: 0.2rem !important;
+      text-align: center;
+      background-color: rgba(255, 255, 255, 0.98);
+    }
+    
+    .dropdown-item {
+      padding: 8px 16px;
+      transition: all 0.2s ease;
+    }
+    
+    .dropdown-item:hover,
+    .dropdown-item:focus {
+      background-color: #f0f0f0;
+      color: var(--site-purple) !important;
+    }
+    
+    /* Sticky Navbar State */
+    .navbar-wrapper.sticky .navbar {
+      background: var(--site-purple) !important;
+      box-shadow: 0 5px 20px rgba(100, 4, 160, 0.3);
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1030;
+      width: 100%;
+      border-radius: 0;
+    }
+    
+    .navbar-wrapper.sticky .nav-link,
+    .navbar-wrapper.sticky .dropdown-toggle {
+      color: white !important;
+    }
+    
+    .navbar-wrapper.sticky .dropdown-menu {
+      background-color: rgba(100, 4, 160, 0.98) !important;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .navbar-wrapper.sticky .dropdown-item {
+      color: white !important;
+    }
+    
+    .navbar-wrapper.sticky .dropdown-item:hover {
+      background-color: rgba(255, 255, 255, 0.15) !important;
+    }
+    
+    .navbar-wrapper.sticky .navbar-toggler-icon {
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='white' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    }
+    
+    /* Show dropdown on hover */
+    .nav-item.dropdown:hover .dropdown-menu {
+      display: block;
+      margin-top: 0;
+    }
+    
+    /* Carousel */
+    .carousel-inner img {
+      max-height: 500px;
+      object-fit: cover;
+      width: 100%;
+      border-radius: 8px;
+    }
+    
+    .carousel-caption {
+      background: rgba(0, 0, 0, 0.5);
+      padding: 5px;
+    }
+    
+    /* Card Styles */
+    .card-header-custom {
+      background: var(--site-purple);
+      color: white;
+      font-weight: bold;
+      font-size: 1.1rem;
+      border-top-left-radius: 0.5rem;
+      border-top-right-radius: 0.5rem;
+      border: none;
+    }
+    
+    /* News & Announcements */
+    .news-item {
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .news-item:hover {
+      transform: translateY(-3px);
+    }
+    
+    .news-img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+    
+    .news-heading-link {
+      color: var(--site-green);
+      transition: color 0.3s ease;
+    }
+    
+    .news-heading-link:hover {
+      color: var(--site-purple) !important;
+      text-decoration: underline;
+    }
+    
+    .news-bulletin li {
+      padding: 10px;
+      border-bottom: 1px solid #eee;
+      transition: all 0.3s ease;
+    }
+    
+    .news-bulletin li:hover {
+      background-color: #f9f9f9;
+    }
+    
+    .news-bulletin li:last-child {
+      border-bottom: none;
+    }
+    
+    .announcement-list li {
+      padding-left: 5px;
+      border-left: 3px solid #e9ecef;
+      transition: all 0.3s ease;
+    }
+    
+    .announcement-list li:hover {
+      border-left-color: var(--site-purple);
+      background-color: #f8f9fa;
+    }
+
+    /* Program List Styling */
+    .program-list {
+      padding-left: 0.5rem; /* Additional padding if needed */
+    }
+.program-list li {
+  padding-left: 15px;
+  border-left: 3px solid #e9ecef;
+  transition: all 0.3s ease;
+  margin-bottom: 0.5rem;
+}
+
+.program-list li:hover {
+  border-left-color: var(--site-purple);
+  background-color: #f8f9fa;
+  {% comment %} transform: translateX(5px); {% endcomment %}
+}
+
+.program-list li:last-child {
+  margin-bottom: 0;
+}
+
+/* Icon colors */
+.program-list .text-info { color: #17a2b8; }
+.program-list .text-success { color: var(--site-green); }
+.program-list .text-primary { color: #007bff; }
+.program-list .text-purple { color: var(--site-purple); }
+.program-list .text-warning { color: #ffc107; }
+.program-list .text-secondary { color: #6c757d; }
+    
+    /* Staff & Profile Images */
     .rounded-img {
       width: 100px;
       height: 100px;
       object-fit: cover;
       border-radius: 50%;
+      transition: transform 0.3s ease;
+    }
+    
+    .rounded-img:hover {
+      transform: scale(1.05);
+    }
+    .staff-profile-link {
+      color: #212529 !important; /* Same as text-dark */
+      transition: color 0.3s ease;
+    }
+    
+    .staff-profile-link:hover {
+      color: var(--site-purple) !important;
+    }
+    
+    /* Stats Block */
+    .stats-block {
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+      border: 2px solid transparent;
+    }
+    
+    .stats-block:hover {
+      transform: translateY(-8px) scale(1.03);
+      border-color: rgba(157, 252, 192, 0.3);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+      background-color: rgba(255, 255, 255, 0.15) !important;
+    }
+    
+    .counter {
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: var(--site-purple);
+    }
+    
+    .stats-text {
+      color: var(--site-purple);
+    }
+    
+    /* Marquee */
+    .marquee-vertical {
+      position: absolute;
+      width: 100%;
+      animation: marqueeVertical 30s linear infinite;
+    }
+    
+    @keyframes marqueeVertical {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(calc(-100% + 200px)); }
+    }
+    
+    .card-body:hover .marquee-vertical {
+      animation-play-state: paused;
+    }
+    
+    /* Footer */
+    .footer {
+      background-color: #f8f9fa;
+      border-top: 1px solid #e9ecef;
+      padding: 30px 0;
+      font-size: 1rem;
+    }
+    
+    .footer h6 {
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+    }
+    
+    .footer a {
+      color: inherit;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    
+    .footer a:hover {
+      color: var(--site-purple);
+      text-decoration: underline;
+    }
+    
+    .footer .fa {
+      width: 16px;
+      text-align: center;
+      margin-right: 8px;
+    }
+    
+    .footer .fa-map-marker-alt,
+    .footer .fa-phone,
+    .footer .fa-envelope {
+      color: var(--site-green) !important;
+    }
+    
+    .footer .fa-angle-right {
+      color: var(--site-green) !important;
+      margin-right: 8px;
+    }
+    
+    .footer .quick-links a:hover .fa-angle-right {
+      color: var(--site-purple) !important;
+      transform: translateX(3px);
+      transition: all 0.3s ease;
+    }
+    
+    .designer-link {
+      color: var(--site-purple) !important;
+      text-decoration: none !important;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+    
+    .designer-link:hover {
+      opacity: 0.8;
+    }
+    
+    /* Utility Classes */
+    .text-purple {
+      color: var(--site-purple);
+    }
+    
+    .star-divider {
+      border: none;
+      border-top: 2px solid var(--site-purple);
+      margin: 10px 0;
+      width: 90%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    /* Back to Top Button */
+#backToTopBtn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  display: none;
+  z-index: 99;
+  border: none;
+  background-color: var(--site-purple);
+  color: white;
+  transition: all 0.3s ease;
+}
+
+#backToTopBtn:hover {
+  background-color: var(--site-green);
+  transform: translateY(-3px);
+}
+    
+    /* Responsive Adjustments */
+    @media (max-width: 991.98px) {
+      #navbarNav {
+        text-align: center;
+      }
+    
+      .navbar-collapse {
+        padding: 1rem 0;
+      }
+    
+      .navbar-nav {
+        width: 100%;
+      }
+    
+      .dropdown-item {
+        text-align: center !important;
+      }
+    
+      .nav-item {
+        margin: 0.5rem 0;
+      }
+    
+      .dropdown-menu {
+        background-color: rgba(255, 255, 255, 0.98) !important;
+        margin: 0.5rem auto !important;
+        width: 80%;
+      }
+    
+      .navbar-toggler {
+        display: block;
+        margin: 0 auto;
+      }
+    
+      .navbar-wrapper.sticky .navbar-custom {
+        background-color: var(--site-purple) !important;
+      }
+    }
+    
+    @media (max-width: 767.98px) {
+      .school-header > div {
+        width: 90% !important;
+      }
+      
+      .school-title {
+        font-size: 1.5rem;
+      }
     }
   </style>
 </head>
@@ -58,7 +499,7 @@
 
       <!-- Centered Title and Motto -->
       <div class="text-center flex-grow-1">
-        <h1 class="mb-1 school-title" style="color: #6f42c1;">
+        <h1 class="mb-1 school-title">
           Dr. John Chacha Secondary School
         </h1>
         <small class="school-motto" style="font-size: 1.1rem; letter-spacing: 1.5px; color: #555;">
@@ -114,120 +555,185 @@
     </nav>
   </div>
 
-  <!-- Slideshow -->
-  <div class="mt-3 d-flex justify-content-center">
-    <div class="w-100" style="max-width: 90%">
-      <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img src="https://drjohnchachasecondary.org/images/assets/lab.jpg" alt="School Logo" />
+<!-- Slideshow -->
+<div class="mt-3 d-flex justify-content-center">
+  <div class="w-100" style="max-width: 90%">
+    <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+      <!-- Indicators -->
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active"></button>
+        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1"></button>
+        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2"></button>
+        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="3"></button>
+        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="4"></button>
+      </div>
+      
+      <!-- Slides -->
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="https://drjohnchachasecondary.org/images/assets/lab.jpg" class="d-block w-100" alt="Science Lab">
+          <div class="carousel-caption d-none d-md-block">
+            <h5>State-of-the-Art Science Laboratory</h5>
+            <p>Our fully equipped lab for hands-on science experiments</p>
+          </div>
+        </div>
+        
+        <div class="carousel-item">
+          <img src="https://drjohnchachasecondary.org/images/assets/computerlab.jpg" class="d-block w-100" alt="Computer Lab">
+          <div class="carousel-caption d-none d-md-block">
+            <h5>Modern Computer Laboratory</h5>
+            <p>Preparing students for the digital future</p>
+          </div>
+        </div>
+        
+        <div class="carousel-item">
+          <img src="https://drjohnchachasecondary.org/images/assets/library.jpg" class="d-block w-100" alt="Library">
+          <div class="carousel-caption d-none d-md-block">
+            <h5>Well-Stocked Library</h5>
+            <p>Over 10,000 books to support student learning</p>
+          </div>
+        </div>
+        
+        <div class="carousel-item">
+          <img src="https://drjohnchachasecondary.org/images/assets/classroom.jpg" class="d-block w-100" alt="Classroom">
+          <div class="carousel-caption d-none d-md-block">
+            <h5>Modern Classrooms</h5>
+            <p>Conducive learning environment with modern facilities</p>
+          </div>
+        </div>
+        
+        <div class="carousel-item">
+          <img src="https://drjohnchachasecondary.org/images/assets/sports.jpg" class="d-block w-100" alt="Sports">
+          <div class="carousel-caption d-none d-md-block">
+            <h5>Sports Facilities</h5>
+            <p>Developing talents through various sporting activities</p>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Controls -->
+      <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+  <!-- Main Content -->
+  <div class="wide-container my-4">
+    <div class="row g-3">
+      <!-- News Read -->
+      <div class="col-md-8 d-flex">
+        <div class="card w-100 shadow-sm border-0">
+          <div class="card-header card-header-custom"><i class="fas fa-book-reader me-2"></i>Reading on ...</div>
+          <div class="card-body">
+            <div id="newsDetailView">
+              <h4 id="newsDetailTitle" class="mb-3">News title 1 Sample</h4>
+              <img id="newsDetailImage" src="{% static "web/images/computerlab.jpg" %}" class="img-fluid rounded mb-3" alt="News Image">
+              <div id="newsDetailContent" class="news-content">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nisl eget ultricies tincidunt, nisl nisl aliquam nisl, eget ultricies nisl nisl eget nisl. Nullam auctor, nisl eget ultricies tincidunt, nisl nisl aliquam nisl, eget ultricies nisl nisl eget nisl.</p>
+                <p>Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nullam auctor, nisl eget ultricies tincidunt, nisl nisl aliquam nisl, eget ultricies nisl nisl eget nisl. Nullam auctor, nisl eget ultricies tincidunt, nisl nisl aliquam nisl, eget ultricies nisl nisl eget nisl.</p>
+                <p>Donec euismod, nisl eget ultricies tincidunt, nisl nisl aliquam nisl, eget ultricies nisl nisl eget nisl. Nullam auctor, nisl eget ultricies tincidunt, nisl nisl aliquam nisl, eget ultricies nisl nisl eget nisl.</p>
+                <p>The new state-of-the-art computer lab will be inaugurated on June 1st by the Regional Commissioner. The lab features:</p>
+                <ul>
+                  <li>30 new high-speed computers</li>
+                  <li>Interactive whiteboard</li>
+                  <li>High-speed internet connection</li>
+                  <li>Air conditioning</li>
+                </ul>
+                <p>This project was funded by the school board and alumni donations. The lab will be open for all students from Form 1 to Form 4.</p>
+              </div>
+              <small class="text-muted" id="newsPostBy">General Manager</small><br>
+              <small class="text-muted" id="newsDetailDate">Published on: May 5, 2023</small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- News Bulletins -->
+      <div class="col-md-4 d-flex">
+        <div class="card w-100 shadow-sm border-0">
+          <div class="card-header card-header-custom"> <i class="fas fa-newspaper me-2"></i>News Bulletins</div>
+          <div class="card-body">
+            <ul class="list-unstyled news-bulletin">
+              <li class="mb-3">
+                <div class="d-flex">
+                  <div class="me-3">
+                    <i class="fas fa-newspaper text-primary bg-light p-2 rounded-circle"></i>
+                  </div>
+                  <div>
+                    <a href="#" class="text-decoration-none"><h6 class="mb-1">School Reopening Date</h6></a>
+                    <p class="small text-muted mb-0">The school will reopen on June 10th for second term</p>
+                    <small class="text-muted"><i class="far fa-clock me-1"></i> 2 days ago</small>
+                  </div>
+                </div>
+              </li>
+              <li class="mb-3">
+                <div class="d-flex">
+                  <div class="me-3">
+                    <i class="fas fa-trophy text-warning bg-light p-2 rounded-circle"></i>
+                  </div>
+                  <div>
+                    <a href="#" class="text-decoration-none"><h6 class="mb-1">Sports Day Results</h6></a>
+                    <p class="small text-muted mb-0">Blue house emerged winners in the annual sports day</p>
+                    <small class="text-muted"><i class="far fa-clock me-1"></i> 1 week ago</small>
+                  </div>
+                </div>
+              </li>
+              <li class="mb-3">
+                <div class="d-flex">
+                  <div class="me-3">
+                    <i class="fas fa-book text-success bg-light p-2 rounded-circle"></i>
+                  </div>
+                  <div>
+                    <a href="#" class="text-decoration-none"><h6 class="mb-1">New Library Books</h6></a>
+                    <p class="small text-muted mb-0">200 new books added to the school library collection</p>
+                    <small class="text-muted"><i class="far fa-clock me-1"></i> 2 weeks ago</small>
+                  </div>
+                </div>
+              </li>
+              <li class="mb-3">
+                <div class="d-flex">
+                  <div class="me-3">
+                    <i class="fas fa-flask text-info bg-light p-2 rounded-circle"></i>
+                  </div>
+                  <div>
+                    <a href="#" class="text-decoration-none"><h6 class="mb-1">Science Exhibition</h6></a>
+                    <p class="small text-muted mb-0">Students to present innovative projects next Friday</p>
+                    <small class="text-muted"><i class="far fa-clock me-1"></i> 3 weeks ago</small>
+                  </div>
+                </div>
+              </li>
+            </ul>
+            <div class="d-flex justify-content-center">
+              <a href="#" class="btn btn-outline-success btn-sm">
+                <i class="fas fa-list me-1"></i> View All Updates
+              </a>
+            </div>      
           </div>
         </div>
       </div>
     </div>
   </div>
-<div class="wide-container my-4">
-  <div class="row g-3">
-    <!-- News Read -->
-    <div class="col-md-8 d-flex">
-      <div class="card w-100 shadow-sm border-0">
-        <div class="card-header card-header-custom">Reading on ...</div>
-        <div class="card-body">
-          <!-- News Detail View (shown when news item clicked) -->
-          <div id="newsDetailView">
-            <h4 id="newsDetailTitle" class="mb-3">News title 1 Sample</h4>
-            <img id="newsDetailImage" src="{% static "web/images/computerlab.jpg" %}" class="img-fluid rounded mb-3" alt="News Image">
-            <div id="newsDetailContent" class="news-content">
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nisl eget ultricies tincidunt, nisl nisl aliquam nisl, eget ultricies nisl nisl eget nisl. Nullam auctor, nisl eget ultricies tincidunt, nisl nisl aliquam nisl, eget ultricies nisl nisl eget nisl.</p>
-              <p>Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nullam auctor, nisl eget ultricies tincidunt, nisl nisl aliquam nisl, eget ultricies nisl nisl eget nisl. Nullam auctor, nisl eget ultricies tincidunt, nisl nisl aliquam nisl, eget ultricies nisl nisl eget nisl.</p>
-              <p>Donec euismod, nisl eget ultricies tincidunt, nisl nisl aliquam nisl, eget ultricies nisl nisl eget nisl. Nullam auctor, nisl eget ultricies tincidunt, nisl nisl aliquam nisl, eget ultricies nisl nisl eget nisl.</p>
-              <p>The new state-of-the-art computer lab will be inaugurated on June 1st by the Regional Commissioner. The lab features:</p><ul><li>30 new high-speed computers</li><li>Interactive whiteboard</li><li>High-speed internet connection</li><li>Air conditioning</li></ul><p>This project was funded by the school board and alumni donations. The lab will be open for all students from Form 1 to Form 4.</p>
-            </div>
-            <small class="text-muted" id="newsDetailDate">Published on: May 5, 2023</small>
-          </div>
-        </div>
-      </div>
-    </div>
 
-<!-- News Bulletins -->
-<div class="col-md-4 d-flex">
-  <div class="card w-100 shadow-sm border-0">
-    <div class="card-header card-header-custom">
-      News Bulletins
-    </div>
-    <div class="card-body">
-      <ul class="list-unstyled news-bulletin">
-        <li class="mb-3">
-          <div class="d-flex">
-            <div class="me-3">
-              <i class="fas fa-newspaper text-primary bg-light p-2 rounded-circle"></i>
-            </div>
-            <div>
-              <a href="#" class="text-decoration-none"><h6 class="mb-1">School Reopening Date</h6></a>
-              <p class="small text-muted mb-0">The school will reopen on June 10th for second term</p>
-              <small class="text-muted"><i class="far fa-clock me-1"></i> 2 days ago</small>
-            </div>
-          </div>
-        </li>
-        <li class="mb-3">
-          <div class="d-flex">
-            <div class="me-3">
-              <i class="fas fa-trophy text-warning bg-light p-2 rounded-circle"></i>
-            </div>
-            <div>
-              <a href="#" class="text-decoration-none"><h6 class="mb-1">Sports Day Results</h6></a>
-              <p class="small text-muted mb-0">Blue house emerged winners in the annual sports day</p>
-              <small class="text-muted"><i class="far fa-clock me-1"></i> 1 week ago</small>
-            </div>
-          </div>
-        </li>
-        <li class="mb-3">
-          <div class="d-flex">
-            <div class="me-3">
-              <i class="fas fa-book text-success bg-light p-2 rounded-circle"></i>
-            </div>
-            <div>
-              <a href="#" class="text-decoration-none"><h6 class="mb-1">New Library Books</h6></a>
-              <p class="small text-muted mb-0">200 new books added to the school library collection</p>
-              <small class="text-muted"><i class="far fa-clock me-1"></i> 2 weeks ago</small>
-            </div>
-          </div>
-        </li>
-        <li class="mb-3">
-          <div class="d-flex">
-            <div class="me-3">
-              <i class="fas fa-flask text-info bg-light p-2 rounded-circle"></i>
-            </div>
-            <div>
-              <a href="#" class="text-decoration-none"><h6 class="mb-1">Science Exhibition</h6></a>
-              <p class="small text-muted mb-0">Students to present innovative projects next Friday</p>
-              <small class="text-muted"><i class="far fa-clock me-1"></i> 3 weeks ago</small>
-            </div>
-          </div>
-        </li>
-      </ul>
-      <div class="d-flex justify-content-center">
-        <a href="#" class="btn btn-outline-success btn-sm">
-          <i class="fas fa-list me-1"></i> View All Updates
-        </a>
-      </div>      
-    </div>
-  </div>
-</div>
-  </div>
-</div>
-
-<div class="wide-container my-4">
+  <div class="wide-container my-4">
     <div class="row g-3">
       <!-- Headmaster's Welcome -->
       <div class="col-md-4 d-flex">
         <div class="card w-100 shadow-sm border-0">
           <div class="card-header card-header-custom">
-            Headmaster's Welcome
+            <i class="fas fa-user-tie me-2"></i> Headmaster's Welcome
           </div>
           <div class="card-body text-center">
             <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Headmaster" class="rounded-img" />
-            <h5 class="fw-bold mb-1">Patrick Pius</h5>
+            <h5 class="fw-bold mb-1">
+              <a href="#" class="text-decoration-none staff-profile-link">Patrick Pius</a>
+            </h5>
             <p class="text-muted mb-3">School Headmaster</p>
             <p>
               Welcome to Dr. John Chacha Secondary School. We are committed to
@@ -241,36 +747,38 @@
       <!-- Latest News -->
       <div class="col-md-8 d-flex">
         <div class="card w-100 shadow-sm border-0">
-          <div class="card-header card-header-custom">Latest News</div>
+          <div class="card-header card-header-custom"><i class="fas fa-bullhorn me-2"></i>Latest News</div>
           <div class="card-body">
             <div class="row g-3">
               <div class="col-md-4">
                 <img src="https://drjohnchachasecondary.org/images/assets/tour.jpg" alt="News 1" class="news-img" />
                 <h6 class="mt-2 mb-1">
-                  <a href="#" class="news-heading-link text-decoration-none">Annual Science Fair Winners Announced </a>
+                  <a href="#" class="news-heading-link text-decoration-none">Annual Science Fair Winners Announced</a>
                 </h6>
                 <small class="text-muted"><i class="bi bi-calendar"></i> May 15, 2023</small>
               </div>
               <div class="col-md-4">
                 <img src="https://images.unsplash.com/photo-1509021436665-8f07dbf5bf1d?q=80&w=400" alt="News 2"
                   class="news-img" />
-                  <h6 class="mt-2 mb-1">
-                    <a href="#" class="news-heading-link text-decoration-none">School Team Reaches Regional Finals</a>
-                  </h6>
+                <h6 class="mt-2 mb-1">
+                  <a href="#" class="news-heading-link text-decoration-none">School Team Reaches Regional Finals</a>
+                </h6>
                 <small class="text-muted"><i class="bi bi-calendar"></i> May 10, 2023</small>
               </div>
               <div class="col-md-4">
                 <img src="https://drjohnchachasecondary.org/images/assets/computerlab.jpg" alt="News 3"
                   class="news-img" />
-                  <h6 class="mt-2 mb-1">
-                    <a href="#" class="news-heading-link text-decoration-none">New Computer Lab Opening Next Month</a>
-                  </h6>
+                <h6 class="mt-2 mb-1">
+                  <a href="#" class="news-heading-link text-decoration-none">New Computer Lab Opening Next Month</a>
+                </h6>
                 <small class="text-muted"><i class="bi bi-calendar"></i> May 5, 2023</small>
               </div>
             </div>
-            <a href="#" class="btn btn-outline-success btn-sm">
-              <i class="fas fa-list me-1"></i> All News
-            </a>
+            <div class="d-flex justify-content-center">
+              <a href="#" class="btn btn-outline-success btn-sm">
+                <i class="fas fa-list me-1"></i> View All News
+              </a>
+            </div>  
           </div>
         </div>
       </div>
@@ -280,14 +788,16 @@
       <div class="col-md-4">
         <div class="card mb-3 shadow-sm border-0">
           <div class="card-header card-header-custom">
-            Staff Profiles
+            <i class="fas fa-users me-2"></i> Staff Profiles
           </div>
           <div class="card-body">
             <!-- Staff Member 1 -->
             <div class="d-flex align-items-center mb-3">
               <img src="{% static "web/staff/Baraka.jpg" %}" class="rounded-img me-3" alt="" />
               <div>
-                <div class="fw-bold">Lauliani Ernest</div>
+                <div class="fw-bold">
+                  <a href="#" class="text-decoration-none text-dark staff-profile-link">Lauliani Ernest</a>
+                </div>
                 <div class="text-muted small">Deputy Headmaster</div>
               </div>
             </div>
@@ -296,7 +806,9 @@
             <div class="d-flex align-items-center mb-3">
               <img src="https://via.placeholder.com/40" class="rounded-img me-3" alt="" />
               <div>
-                <div class="fw-bold">Baraka Mswaya</div>
+                <div class="fw-bold">
+                  <a href="#" class="text-decoration-none text-dark staff-profile-link">Baraka Mswaya</a>
+                </div>
                 <div class="text-muted small">Academic Master</div>
               </div>
             </div>
@@ -308,7 +820,7 @@
       </div>
       <div class="col-md-4">
         <div class="card mb-3 shadow-sm border-0">
-          <div class="card-header card-header-custom">Announcements</div>
+          <div class="card-header card-header-custom"><i class="fas fa-bell me-2"></i>Announcements</div>
           <div class="card-body">
             <ul class="list-unstyled announcement-list">
               <li class="mb-3">
@@ -336,77 +848,47 @@
                 </a>
               </li>
             </ul>
-            <a href="#" class="btn btn-outline-success btn-sm">
-              <i class="fas fa-list me-1 "></i> All Announcements
-            </a>
+            <div class="d-flex justify-content-center">
+              <a href="#" class="btn btn-outline-success btn-sm">
+                <i class="fas fa-list me-1"></i> View All Announcements
+              </a>
+            </div>  
           </div>
         </div>
       </div>
       <div class="col-md-4">
         <div class="card mb-3 shadow-sm border-0">
-          <div class="card-header card-header-custom">Programs - This Week</div>
+          <div class="card-header card-header-custom">
+            <i class="fas fa-calendar-week me-2"></i> Programs This Week
+          </div>
           <div class="card-body p-0" style="height: 200px; overflow: hidden; position: relative;">
             <div class="marquee-vertical">
-              <ul class="list-unstyled mb-0 program-list">
-                <li class="py-2">
+              <ul class="list-unstyled mb-0 program-list ps-2"> <!-- Added ps-3 for left padding -->
+                <li class="py-2 ps-3 ms-2 border-start border-3" style="border-left-color: #e9ecef; transition: all 0.3s ease;">
                   <i class="fas fa-flask text-info me-2"></i>
                   <strong>Monday:</strong> Science Fair Preparation
                 </li>
-                <li class="py-2">
+                <li class="py-2 ps-3 ms-2 border-start border-3" style="border-left-color: #e9ecef; transition: all 0.3s ease;">
                   <i class="fas fa-running text-success me-2"></i>
                   <strong>Tuesday:</strong> Sports Day
                 </li>
-                <li class="py-2">
+                <li class="py-2 ps-3 ms-2 border-start border-3" style="border-left-color: #e9ecef; transition: all 0.3s ease;">
                   <i class="fas fa-chalkboard-teacher text-primary me-2"></i>
                   <strong>Wednesday:</strong> Guest Lecture
                 </li>
-                <li class="py-2">
+                <li class="py-2 ps-3 ms-2 border-start border-3" style="border-left-color: #e9ecef; transition: all 0.3s ease;">
                   <i class="fas fa-music text-purple me-2"></i>
                   <strong>Thursday:</strong> Cultural Program
                 </li>
-                <li class="py-2">
+                <li class="py-2 ps-3 ms-2 border-start border-3" style="border-left-color: #e9ecef; transition: all 0.3s ease;">
                   <i class="fas fa-handshake text-warning me-2"></i>
                   <strong>Friday:</strong> Parent-Teacher Meeting
                 </li>
-                <li class="py-2">
+                <li class="py-2 ps-3 ms-2 border-start border-3" style="border-left-color: #e9ecef; transition: all 0.3s ease;">
                   <i class="fas fa-broom text-secondary me-2"></i>
                   <strong>Saturday:</strong> Clean-up Day
                 </li>
-                <li class="py-2">
-                  <i class="fas fa-broom text-secondary me-2"></i>
-                  <strong>Sunday:</strong> Clean-up Day
-                </li>
-                <li class="py-2">
-                  <!-- Star Divider -->
-                  <hr class="star-divider">
-
-                  <!--End Divider-->
-                  <!-- Duplicate the first item -->
-                <li class="py-2">
-                  <i class="fas fa-flask text-info me-2"></i>
-                  <strong>Monday:</strong> Science Fair Preparation
-                </li>
-                <li class="py-2">
-                  <i class="fas fa-running text-success me-2"></i>
-                  <strong>Tuesday:</strong> Sports Day
-                </li>
-                <li class="py-2">
-                  <i class="fas fa-chalkboard-teacher text-primary me-2"></i>
-                  <strong>Wednesday:</strong> Guest Lecture
-                </li>
-                <li class="py-2">
-                  <i class="fas fa-music text-purple me-2"></i>
-                  <strong>Thursday:</strong> Cultural Program
-                </li>
-                <li class="py-2">
-                  <i class="fas fa-handshake text-warning me-2"></i>
-                  <strong>Friday:</strong> Parent-Teacher Meeting
-                </li>
-                <li class="py-2">
-                  <i class="fas fa-broom text-secondary me-2"></i>
-                  <strong>Saturday:</strong> Clean-up Day
-                </li>
-                <li class="py-2">
+                <li class="py-2 ps-3 ms-2 border-start border-3" style="border-left-color: #e9ecef; transition: all 0.3s ease;">
                   <i class="fas fa-broom text-secondary me-2"></i>
                   <strong>Sunday:</strong> Clean-up Day
                 </li>
@@ -416,15 +898,14 @@
         </div>
       </div>
     </div>
+    
     <!-- Statistics Card Block -->
-    <div class="mb-4"> <!-- Matches 90% width and adds bottom margin -->
+    <div class="mb-4">
       <div class="card shadow-sm border-0 overflow-hidden">
-        <!-- Card Header -->
         <div class="card-header card-header-custom">
-          <h4 class="mb-0 text-center"><i class="fas fa-chart-line me-2"></i> School Statistics - 2025</h4>
+          <h4 class="mb-0"><i class="fas fa-chart-line me-2"></i> School Statistics - 2025</h4>
         </div>
 
-        <!-- Card Body -->
         <div class="card-body py-4">
           <div class="row g-3 text-center">
             <!-- Teachers -->
@@ -529,9 +1010,9 @@
           <!-- Contact Column -->
           <div class="col-12 col-md-6 col-lg-3 mb-4 mb-md-0">
             <h6 class="fw-bold">Contact Information</h6>
-            <p><i class="fa fa-map-marker-alt text-primary me-2"></i> P.O. Box 123, Tarime, Tanzania</p>
-            <p><i class="fa fa-phone text-primary me-2"></i> +255 755 405 492</p>
-            <p><i class="fa fa-envelope text-primary me-2"></i> info@djcss.com</p>
+            <p><i class="fa fa-sm fa-map-marker-alt text-primary me-2"></i> P.O. Box 457, Tarime, Tanzania</p>
+            <p><i class="fa fa-sm fa-phone text-primary me-2"></i> +255 755 405 492</p>
+            <p><i class="fa fa-sm fa-envelope text-primary me-2"></i> drjcss2017@gmail.com</p>
           </div>
 
           <!-- Quick Links Column -->
@@ -581,6 +1062,10 @@
       </div>
       </div>
     </div>
+    <!-- Back to Top Button -->
+<button id="backToTopBtn" class="btn btn-primary rounded-circle shadow" title="Go to top">
+  <i class="fas fa-arrow-up"></i>
+</button>
     <script>
       document.addEventListener('DOMContentLoaded', function () {
         const marquee = document.querySelector('.marquee-vertical');
@@ -637,6 +1122,27 @@
     <script>
       // Dynamic year update
       document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+    <script>
+      // Back to Top Button
+      const backToTopBtn = document.getElementById("backToTopBtn");
+      
+      window.addEventListener("scroll", function() {
+        if (window.pageYOffset > 300) {
+          backToTopBtn.style.display = "flex";
+          backToTopBtn.style.justifyContent = "center";
+          backToTopBtn.style.alignItems = "center";
+        } else {
+          backToTopBtn.style.display = "none";
+        }
+      });
+      
+      backToTopBtn.addEventListener("click", function() {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth"
+        });
+      });
     </script>
 </body>
 
