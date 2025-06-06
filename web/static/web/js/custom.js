@@ -196,3 +196,4 @@
     setupDropdownHover();
     window.addEventListener("resize", setupDropdownHover);
   });
+  

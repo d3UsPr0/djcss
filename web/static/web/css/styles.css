@@ -297,7 +297,7 @@ body {
   padding-left: 10px;
 }
 .badge {
-  animation: blink 1s infinite;
+  animation: blink 1.5s infinite;
 }
 
 @keyframes blink {
