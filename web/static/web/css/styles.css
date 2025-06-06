@@ -71,9 +71,9 @@ body {
   border-radius: 0px 0px 100px 100px;
   background: linear-gradient(
     to right,
-    rgba(100, 4, 160, 0.1),
-    rgba(255, 255, 255, 0.8),
-    rgba(100, 4, 160, 0.1)
+    rgba(174, 0, 255, 0.1),
+    rgba(174, 0, 255, 0.1),
+    rgba(174, 0, 255, 0.1)
   );
 }
 
@@ -291,6 +291,20 @@ body {
   background-color: #f8f9fa;
 }
 
+.featured-news {
+  background-color: rgba(255, 193, 7, 0.05);
+  border-left: 3px solid #ffc107;
+  padding-left: 10px;
+}
+.badge {
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
+}
 /* Program List Styling */
 .program-list {
   padding-left: 0.5rem;
