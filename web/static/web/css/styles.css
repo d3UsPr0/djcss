@@ -309,6 +309,25 @@ body {
 .program-list {
   padding-left: 0.5rem;
 }
+@keyframes highlightBlink {
+  0% {
+    background-position: -100% 0;
+  }
+  100% {
+    background-position: 100% 0;
+  }
+}
+
+.highlight-animation {
+  background: linear-gradient(90deg, 
+            transparent 0%, 
+            rgba(255, 193, 7, 0.4) 50%, 
+            transparent 100%);
+  background-size: 200% 100%;
+  animation: highlightBlink 2s ease-in-out 1;
+  /* border-bottom: 1px solid var(--site-purple) !important; */
+  border-radius: 3px;
+}
 
 .program-list li {
   padding-left: 15px;

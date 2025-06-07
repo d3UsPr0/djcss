@@ -123,128 +123,59 @@
 {% endblock slideshow %}
 <!--End Slideshow-->
 
-<!-- News and Bulletins -->
-{% block news_and_bulletins %}
-<div class="wide-container my-4">
-  <div class="row g-3">
-    <!-- News Read -->
-
-    {% block news_read %}
-    <div class="col-md-8 d-flex">
-      <div class="card w-100 shadow-sm border-0">
-        <div class="card-header card-header-custom">
-          <i class="fas fa-book-reader me-2"></i>Reading on ...
-        </div>
-        <div class="card-body">
-          <div id="newsDetailView">
-            <h4 id="newsDetailTitle" class="mb-3">About Us</h4>
-            <img id="newsDetailImage" src="{% static
-            "web/images/computerlab.jpg" %}" class="img-fluid rounded mb-3"
-            alt="News Image">
-            <div id="newsDetailContent" class="news-content">
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
-                auctor, nisl eget ultricies tincidunt, nisl nisl aliquam nisl,
-                eget ultricies nisl nisl eget nisl. Nullam auctor, nisl eget
-                ultricies tincidunt, nisl nisl aliquam nisl, eget ultricies nisl
-                nisl eget nisl.
-              </p>
-              <p>
-                Vestibulum ante ipsum primis in faucibus orci luctus et ultrices
-                posuere cubilia Curae; Nullam auctor, nisl eget ultricies
-                tincidunt, nisl nisl aliquam nisl, eget ultricies nisl nisl eget
-                nisl. Nullam auctor, nisl eget ultricies tincidunt, nisl nisl
-                aliquam nisl, eget ultricies nisl nisl eget nisl.
-              </p>
-              <p>
-                Donec euismod, nisl eget ultricies tincidunt, nisl nisl aliquam
-                nisl, eget ultricies nisl nisl eget nisl. Nullam auctor, nisl
-                eget ultricies tincidunt, nisl nisl aliquam nisl, eget ultricies
-                nisl nisl eget nisl.
-              </p>
-              <p>
-                The new state-of-the-art computer lab will be inaugurated on
-                June 1st by the Regional Commissioner. The lab features:
-              </p>
-              <ul>
-                <li>30 new high-speed computers</li>
-                <li>Interactive whiteboard</li>
-                <li>High-speed internet connection</li>
-                <li>Air conditioning</li>
-              </ul>
-              <p>
-                This project was funded by the school board and alumni
-                donations. The lab will be open for all students from Form 1 to
-                Form 4.
-              </p>
-            </div>
-            <small class="text-muted" id="newsPostBy">General Manager</small
-            ><br />
-            <small class="text-muted" id="newsDetailDate"
-              >Published on: May 5, 2023</small
-            >
-          </div>
-        </div>
-      </div>
+{% block content %}
+<div class="col-md-8 d-flex">
+  <div class="card w-100 shadow-sm border-0">
+    <div class="card-header card-header-custom">
+      <i class="fas fa-book-reader me-2"></i>Reading on ...
     </div>
-    {% endblock news_read %}
-
-    <!-- News Bulletins -->
-    <div class="col-md-4 d-flex">
-      <div class="card w-100 shadow-sm border-0">
-        <div class="card-header card-header-custom">
-          <i class="fas fa-newspaper me-2"></i>News Bulletins
-        </div>
-        <div class="card-body">
-          <ul class="list-unstyled news-bulletin">
-            {% for news in bulletins %}
-            <li class="mb-3">
-              <div class="d-flex">
-                <div class="me-3">
-                  <i
-                    class="fas {% if news.category == 'sports' %}fa-trophy text-warning {% elif news.category == 'academic' %}fa-book text-success {% elif news.category == 'events' %}fa-calendar-alt text-primary {% elif news.category == 'health' %}fa-heartbeat text-danger {% else %}fa-newspaper text-info{% endif %} bg-light p-2 rounded-circle"
-                  ></i>
-                </div>
-                <div>
-                  <a
-                    href="{% url 'news_detail' news.slug %}"
-                    class="text-decoration-none"
-                  >
-                    <h6 class="mb-1">{{ news.title }}</h6>
-                  </a>
-                  <p class="small text-muted mb-0">
-                    {{ news.excerpt|truncatewords:15 }}
-                  </p>
-                  <small class="text-muted">
-                    <i class="far fa-clock me-1"></i>
-                    {{ news.publish_date|timesince }} ago
-                    {% if news.is_featured %}
-                    <span class="badge bg-warning ms-2 blink style="animation-delay: {{ forloop.counter0|add:"0.2"|floatformat:1 }}s">New</span>
-                    {% endif %}
-                  </small>
-                </div>
-              </div>
-            </li>
-            {% empty %}
-            <li class="text-center text-muted py-3">
-              No news bulletins available
-            </li>
-            {% endfor %}
+    <div class="card-body">
+      <div id="newsDetailView">
+        <h4 id="newsDetailTitle" class="mb-3">About Us</h4>
+        <img id="newsDetailImage" src="{% static "web/images/computerlab.jpg"
+        %}" class="img-fluid rounded mb-3" alt="News Image">
+        <div id="newsDetailContent" class="news-content">
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
+            auctor, nisl eget ultricies tincidunt, nisl nisl aliquam nisl, eget
+            ultricies nisl nisl eget nisl. Nullam auctor, nisl eget ultricies
+            tincidunt, nisl nisl aliquam nisl, eget ultricies nisl nisl eget
+            nisl.
+          </p>
+          <p>
+            Vestibulum ante ipsum primis in faucibus orci luctus et ultrices
+            posuere cubilia Curae; Nullam auctor, nisl eget ultricies tincidunt,
+            nisl nisl aliquam nisl, eget ultricies nisl nisl eget nisl. Nullam
+            auctor, nisl eget ultricies tincidunt, nisl nisl aliquam nisl, eget
+            ultricies nisl nisl eget nisl.
+          </p>
+          <p>
+            Donec euismod, nisl eget ultricies tincidunt, nisl nisl aliquam
+            nisl, eget ultricies nisl nisl eget nisl. Nullam auctor, nisl eget
+            ultricies tincidunt, nisl nisl aliquam nisl, eget ultricies nisl
+            nisl eget nisl.
+          </p>
+          <p>
+            The new state-of-the-art computer lab will be inaugurated on June
+            1st by the Regional Commissioner. The lab features:
+          </p>
+          <ul>
+            <li>30 new high-speed computers</li>
+            <li>Interactive whiteboard</li>
+            <li>High-speed internet connection</li>
+            <li>Air conditioning</li>
           </ul>
-          <div class="d-flex justify-content-center">
-            <a
-              href="#"
-              class="btn btn-outline-success btn-sm"
-            >
-              <i class="fas fa-list me-1"></i> View All Updates
-            </a>
-          </div>
+          <p>
+            This project was funded by the school board and alumni donations.
+            The lab will be open for all students from Form 1 to Form 4.
+          </p>
         </div>
+        <small class="text-muted" id="newsPostBy">General Manager</small><br />
+        <small class="text-muted" id="newsDetailDate"
+          >Published on: May 5, 2023</small
+        >
       </div>
     </div>
-    <!-- End News Bulletins --> 
   </div>
 </div>
-{% endblock news_and_bulletins %}
-
-<!--End News and Bulletins-->
+{% endblock content %}
