@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import News
+from .models import News, WeeklyProgram
 
 # Register your models here.
 @admin.register(News)
@@ -9,3 +9,11 @@ class NewsAdmin(admin.ModelAdmin):
     search_fields = ('title', 'excerpt', 'content')
     date_hierarchy = 'publish_date'
     ordering = ('-publish_date',)
+    
+@admin.register(WeeklyProgram)
+class WeeklyProgramAdmin(admin.ModelAdmin):
+    list_display = ('name', 'day', 'icon', 'icon_color', 'display_order')
+    list_editable = ('display_order',)  # Allows inline editing of order
+    list_filter = ('day',)
+    search_fields = ('name', 'day')
+    ordering = ('display_order', 'day')

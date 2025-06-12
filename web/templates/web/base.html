@@ -309,7 +309,7 @@
       <div class="row g-3">
         <!-- Headmaster's Welcome -->
         <div class="col-md-4 d-flex">
-          <div class="card w-100 shadow-sm border-0">
+          <div class="card w-100 border-0">
             <div class="card-header card-header-custom">
               <i class="fas fa-user-tie me-2"></i> Headmaster's Welcome
             </div>
@@ -375,7 +375,7 @@
 
       <div class="row mt-4">
         <div class="col-md-4">
-          <div class="card mb-3 shadow-sm border-0">
+          <div class="card mb-3 border-0">
             <div class="card-header card-header-custom">
               <i class="fas fa-users me-2"></i> Staff Profiles
             </div>
@@ -421,7 +421,7 @@
           </div>
         </div>
         <div class="col-md-4">
-          <div class="card mb-3 shadow-sm border-0">
+          <div class="card mb-3 border-0">
             <div class="card-header card-header-custom">
               <i class="fas fa-bell me-2"></i>Announcements
             </div>
@@ -461,96 +461,32 @@
           </div>
         </div>
         <div class="col-md-4">
-          <div class="card mb-3 shadow-sm border-0">
-            <div class="card-header card-header-custom">
-              <i class="fas fa-calendar-week me-2"></i> Programs This Week
-            </div>
-            <div
-              class="card-body p-0"
-              style="height: 200px; overflow: hidden; position: relative"
-            >
-              <div class="marquee-vertical">
-                <ul class="list-unstyled mb-0 program-list ps-2">
-                  <li
-                    class="py-2 ps-3 ms-2 border-start border-3"
-                    style="
-                      border-left-color: #e9ecef;
-                      transition: all 0.3s ease;
-                    "
-                  >
-                    <i class="fas fa-flask text-info me-2"></i>
-                    <strong>Monday:</strong> Science Fair Preparation
-                  </li>
-                  <li
-                    class="py-2 ps-3 ms-2 border-start border-3"
-                    style="
-                      border-left-color: #e9ecef;
-                      transition: all 0.3s ease;
-                    "
-                  >
-                    <i class="fas fa-running text-success me-2"></i>
-                    <strong>Tuesday:</strong> Sports Day
-                  </li>
-                  <li
-                    class="py-2 ps-3 ms-2 border-start border-3"
-                    style="
-                      border-left-color: #e9ecef;
-                      transition: all 0.3s ease;
-                    "
-                  >
-                    <i class="fas fa-chalkboard-teacher text-primary me-2"></i>
-                    <strong>Wednesday:</strong> Guest Lecture
-                  </li>
-                  <li
-                    class="py-2 ps-3 ms-2 border-start border-3"
-                    style="
-                      border-left-color: #e9ecef;
-                      transition: all 0.3s ease;
-                    "
-                  >
-                    <i class="fas fa-music text-purple me-2"></i>
-                    <strong>Thursday:</strong> Cultural Program
-                  </li>
-                  <li
-                    class="py-2 ps-3 ms-2 border-start border-3"
-                    style="
-                      border-left-color: #e9ecef;
-                      transition: all 0.3s ease;
-                    "
-                  >
-                    <i class="fas fa-handshake text-warning me-2"></i>
-                    <strong>Friday:</strong> Parent-Teacher Meeting
-                  </li>
-                  <li
-                    class="py-2 ps-3 ms-2 border-start border-3"
-                    style="
-                      border-left-color: #e9ecef;
-                      transition: all 0.3s ease;
-                    "
-                  >
-                    <i class="fas fa-broom text-secondary me-2"></i>
-                    <strong>Saturday:</strong> Clean-up Day
-                  </li>
-                  <li
-                    class="py-2 ps-3 ms-2 border-start border-3"
-                    style="
-                      border-left-color: #e9ecef;
-                      transition: all 0.3s ease;
-                    "
-                  >
-                    <i class="fas fa-broom text-secondary me-2"></i>
-                    <strong>Sunday:</strong> Clean-up Day
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
+    <div class="card mb-3 shadow-sm border-0">
+        <div class="card-header card-header-custom">
+            <i class="fas fa-calendar-week me-2"></i> Programs This Week
         </div>
+        <div class="card-body p-0" style="height: 200px; overflow: hidden; position: relative;">
+            <div class="marquee-vertical">
+                <ul class="list-unstyled mb-0 program-list ps-2">
+                    {% for program in weekly_programs %}
+                    <li class="py-2 ps-3 ms-2 border-start border-3" 
+                        style="border-left-color: #e9ecef; transition: all 0.3s ease;">
+                        <i class="{{ program.icon }} {{ program.icon_color }} me-2"></i>
+                        <strong>{{ program.day }}:</strong> {{ program.name }}
+                    </li>
+                    {% empty %}
+                    <li class="py-2 ps-3">No programs scheduled this week</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
       </div>
 
       <!-- Statistics Card Block -->
       <div class="mb-4">
-        <div class="card shadow-sm border-0 overflow-hidden">
+        <div class="card border-0 overflow-hidden">
           <div class="card-header card-header-custom">
             <h4 class="mb-0">
               <i class="fas fa-chart-line me-2"></i> School Statistics - 2025
@@ -645,7 +581,7 @@
         <div class="row g-4">
           <!-- Contact Column -->
           <div class="col-12 col-md-6 col-lg-3 mb-4 mb-md-0">
-            <h6 class="fw-bold">Contact Information</h6>
+            <h6 class="fw-bold">Contact Us</h6>
             <p>
               <i class="fa fa-sm fa-map-marker-alt text-primary me-2"></i> P.O.
               Box 457, Tarime, Tanzania

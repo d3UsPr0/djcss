@@ -1,7 +1,6 @@
-    
 from django.shortcuts import render
 from django.utils import timezone
-from .models import News
+from .models import News, WeeklyProgram
 from django.shortcuts import get_object_or_404
 
 # Create your views here.
@@ -39,3 +38,7 @@ def news_detail(request, slug):
         publish_date__lte=timezone.now()
     ).order_by('-is_featured', '-publish_date')  # Featured first (True > False)
     return render(request, 'web/news_detail.html', {'news': news, 'featured_news': featured_news, 'bulletins': bulletins})
+
+def weekly_programs_view(request):
+    programs = WeeklyProgram.objects.all().order_by('display_order', 'day')
+    return render(request, 'web/base.html', {'weekly_programs': programs})

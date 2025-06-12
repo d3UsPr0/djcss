@@ -42,3 +42,64 @@ class News(models.Model):
 
     def __str__(self):
         return self.title
+
+class WeeklyProgram(models.Model):
+    DAY_CHOICES = [
+        ('Monday', 'Monday'),
+        ('Tuesday', 'Tuesday'),
+        ('Wednesday', 'Wednesday'),
+        ('Thursday', 'Thursday'),
+        ('Friday', 'Friday'),
+        ('Saturday', 'Saturday'),
+        ('Sunday', 'Sunday'),
+    ]
+    
+    ICON_CHOICES = [
+        ('fas fa-running', 'Sports'),
+        ('fas fa-comments', 'Debate'),
+        ('fas fa-broom', 'Cleanliness'),
+        ('fas fa-leaf', 'Shamba'),
+        ('fas fa-praying-hands', 'Service & Prayer'),
+        ('fas fa-trophy', 'Weekend Challenge'),
+        ('fas fa-users', 'School Baraza'),
+        ('fas fa-handshake', 'Parent-Teacher Meeting'),
+        ('fas fa-door-open', 'Welcoming Guests'),
+        ('fas fa-music', 'Entertainment'),
+    ]
+    
+    ICON_COLORS = [
+        ('text-primary', 'Blue'),
+        ('text-success', 'Green'),
+        ('text-danger', 'Red'),
+        ('text-warning', 'Yellow'),
+        ('text-info', 'Cyan'),
+        ('text-secondary', 'Gray'),
+        ('text-dark', 'Black'),
+    ]
+    
+    icon_color = models.CharField(
+        max_length=20,
+        choices=ICON_COLORS,
+        default='text-primary',
+        help_text="Color for the program icon"
+    )
+    
+    name = models.CharField(max_length=100, help_text="E.g. Sports Day, Debate, etc.")
+    day = models.CharField(max_length=10, choices=DAY_CHOICES)
+    icon = models.CharField(max_length=50, choices=ICON_CHOICES, default='fas fa-calendar-day')
+    display_order = models.PositiveSmallIntegerField(default=0)
+
+    class Meta:
+        ordering = ['display_order', 'day']
+        verbose_name = "Weekly Program"
+        verbose_name_plural = "Weekly Programs"
+        
+    def save(self, *args, **kwargs):
+        # Auto-set display order based on day
+        day_order = {'Monday': 1, 'Tuesday': 2, 'Wednesday': 3, 
+                    'Thursday': 4, 'Friday': 5, 'Saturday': 6, 'Sunday': 7}
+        self.display_order = day_order.get(self.day, 0)
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return f"{self.day}: {self.name}"

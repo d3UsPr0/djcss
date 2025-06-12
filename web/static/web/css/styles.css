@@ -1,7 +1,7 @@
 :root {
   --site-purple: #6f42c1;
   --site-green: #198754;
-  --site-light-bg: rgb(238, 246, 254);
+  --site-light-bg: rgba(0, 255, 55, 0.036);
 }
 
 /* Base Styles */
@@ -413,20 +413,21 @@ body {
 
 /* Marquee */
 .marquee-vertical {
-  position: absolute;
-  width: 100%;
-  animation: marqueeVertical 30s linear infinite;
-}
+        position: absolute;
+        width: 100%;
+        animation: marqueeVertical 30s linear infinite;
+      }
 
-@keyframes marqueeVertical {
-  0% {
-    transform: translateY(0);
-  }
-  100% {
-    transform: translateY(calc(-100% + 200px));
-  }
-}
-
+      @keyframes marqueeVertical {
+        0% {
+          transform: translateY(0); /* Move upward */
+        }
+        100% {
+          transform: translateY(calc(-100% + 200px)); /* Start below */
+          
+        }
+      }
+      
 .card-body:hover .marquee-vertical {
   animation-play-state: paused;
 }
