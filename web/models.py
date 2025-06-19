@@ -2,7 +2,9 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
 from django.utils.text import slugify
+from django.core.validators import MinValueValidator
 
+# web/models.py
 class News(models.Model):
     CATEGORY_CHOICES = [
         ('academic', 'Academic Updates'),
@@ -103,3 +105,48 @@ class WeeklyProgram(models.Model):
 
     def __str__(self):
         return f"{self.day}: {self.name}"
+
+class SchoolStatistics(models.Model):
+    YEAR_CHOICES = [(year, year) for year in range(2020, 2031)]
+    
+    year = models.PositiveIntegerField(
+        choices=YEAR_CHOICES,
+        default=timezone.now().year,
+        unique=True
+    )
+    teachers = models.PositiveIntegerField(
+        default=0,
+        validators=[MinValueValidator(0)]
+    )
+    form_one = models.PositiveIntegerField(
+        verbose_name="Form 1 Students",
+        default=0,
+        validators=[MinValueValidator(0)]
+    )
+    form_two = models.PositiveIntegerField(
+        verbose_name="Form 2 Students",
+        default=0,
+        validators=[MinValueValidator(0)]
+    )
+    form_three = models.PositiveIntegerField(
+        verbose_name="Form 3 Students",
+        default=0,
+        validators=[MinValueValidator(0)]
+    )
+    form_four = models.PositiveIntegerField(
+        verbose_name="Form 4 Students",
+        default=0,
+        validators=[MinValueValidator(0)]
+    )
+    last_updated = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        verbose_name_plural = "School Statistics"
+        ordering = ['-year']
+
+    def __str__(self):
+        return f"School Statistics - {self.year}"
+
+    @property
+    def total_students(self):
+        return self.form_one + self.form_two + self.form_three + self.form_four

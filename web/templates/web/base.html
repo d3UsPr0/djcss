@@ -183,63 +183,7 @@
     <!-- News Read -->
 
     {% block content %}
-    <div class="col-md-8 d-flex">
-      <div class="card w-100 shadow-sm border-0">
-        <div class="card-header card-header-custom">
-          <i class="fas fa-book-reader me-2"></i>Reading on ...
-        </div>
-        <div class="card-body">
-          <div id="newsDetailView">
-            <h4 id="newsDetailTitle" class="mb-3">About Us</h4>
-            <img id="newsDetailImage" src="{% static
-            "web/images/computerlab.jpg" %}" class="img-fluid rounded mb-3"
-            alt="News Image">
-            <div id="newsDetailContent" class="news-content">
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
-                auctor, nisl eget ultricies tincidunt, nisl nisl aliquam nisl,
-                eget ultricies nisl nisl eget nisl. Nullam auctor, nisl eget
-                ultricies tincidunt, nisl nisl aliquam nisl, eget ultricies nisl
-                nisl eget nisl.
-              </p>
-              <p>
-                Vestibulum ante ipsum primis in faucibus orci luctus et ultrices
-                posuere cubilia Curae; Nullam auctor, nisl eget ultricies
-                tincidunt, nisl nisl aliquam nisl, eget ultricies nisl nisl eget
-                nisl. Nullam auctor, nisl eget ultricies tincidunt, nisl nisl
-                aliquam nisl, eget ultricies nisl nisl eget nisl.
-              </p>
-              <p>
-                Donec euismod, nisl eget ultricies tincidunt, nisl nisl aliquam
-                nisl, eget ultricies nisl nisl eget nisl. Nullam auctor, nisl
-                eget ultricies tincidunt, nisl nisl aliquam nisl, eget ultricies
-                nisl nisl eget nisl.
-              </p>
-              <p>
-                The new state-of-the-art computer lab will be inaugurated on
-                June 1st by the Regional Commissioner. The lab features:
-              </p>
-              <ul>
-                <li>30 new high-speed computers</li>
-                <li>Interactive whiteboard</li>
-                <li>High-speed internet connection</li>
-                <li>Air conditioning</li>
-              </ul>
-              <p>
-                This project was funded by the school board and alumni
-                donations. The lab will be open for all students from Form 1 to
-                Form 4.
-              </p>
-            </div>
-            <small class="text-muted" id="newsPostBy">General Manager</small
-            ><br />
-            <small class="text-muted" id="newsDetailDate"
-              >Published on: May 5, 2023</small
-            >
-          </div>
-        </div>
-      </div>
-    </div>
+    
     {% endblock content %}
 
     <!-- News Bulletins -->
@@ -250,7 +194,7 @@
         </div>
         <div class="card-body">
           <ul class="list-unstyled news-bulletin">
-            {% for news in bulletins %}
+            {% for news in global_bulletins %}
             <li class="mb-3">
               <div class="d-flex">
                 <div class="me-3">
@@ -344,7 +288,7 @@
             </div>
             <div class="card-body">
               <div class="row g-3">
-                {% for news in featured_news %}
+                {% for news in global_featured_news %}
                 <div class="col-md-4">
                   {% if news.image %}
                     <img src="{{ news.image.url }}" alt="{{ news.title }}" class="news-img" width="400" height="300" loading="lazy">
@@ -468,7 +412,7 @@
         <div class="card-body p-0" style="height: 200px; overflow: hidden; position: relative;">
             <div class="marquee-vertical">
                 <ul class="list-unstyled mb-0 program-list ps-2">
-                    {% for program in weekly_programs %}
+                    {% for program in global_weekly_programs %}
                     <li class="py-2 ps-3 ms-2 border-start border-3" 
                         style="border-left-color: #e9ecef; transition: all 0.3s ease;">
                         <i class="{{ program.icon }} {{ program.icon_color }} me-2"></i>
@@ -489,7 +433,7 @@
         <div class="card border-0 overflow-hidden">
           <div class="card-header card-header-custom">
             <h4 class="mb-0">
-              <i class="fas fa-chart-line me-2"></i> School Statistics - 2025
+              <i class="fas fa-chart-line me-2"></i> School Statistics - <span id="year"></span>
             </h4>
           </div>
 
@@ -504,7 +448,7 @@
                   <i
                     class="fas fa-chalkboard-teacher fa-2x mb-3 text-success"
                   ></i>
-                  <h5 class="mb-1 counter" data-target="45">0</h5>
+                  <h5 class="mb-1 counter" data-target={{ global_school_stats.teachers }}>0</h5>
                   <p class="mb-0 small stats-text">Teachers</p>
                 </div>
               </div>
@@ -516,7 +460,7 @@
                   style="background-color: rgba(255, 255, 255, 0.1)"
                 >
                   <i class="fas fa-user-graduate fa-2x mb-3 text-success"></i>
-                  <h5 class="mb-1 counter" data-target="120">0</h5>
+                  <h5 class="mb-1 counter" data-target={{ global_school_stats.form_one }}>0</h5>
                   <p class="mb-0 small stats-text">Form One</p>
                 </div>
               </div>
@@ -528,7 +472,7 @@
                   style="background-color: rgba(255, 255, 255, 0.1)"
                 >
                   <i class="fas fa-user-graduate fa-2x mb-3 text-success"></i>
-                  <h5 class="mb-1 counter" data-target="115">0</h5>
+                  <h5 class="mb-1 counter" data-target={{ global_school_stats.form_two }}>0</h5>
                   <p class="mb-0 small stats-text">Form Two</p>
                 </div>
               </div>
@@ -540,7 +484,7 @@
                   style="background-color: rgba(255, 255, 255, 0.1)"
                 >
                   <i class="fas fa-user-graduate fa-2x mb-3 text-success"></i>
-                  <h5 class="mb-1 counter" data-target="105">0</h5>
+                  <h5 class="mb-1 counter" data-target={{ global_school_stats.form_three }}>0</h5>
                   <p class="mb-0 small stats-text">Form Three</p>
                 </div>
               </div>
@@ -552,7 +496,7 @@
                   style="background-color: rgba(255, 255, 255, 0.1)"
                 >
                   <i class="fas fa-user-graduate fa-2x mb-3 text-success"></i>
-                  <h5 class="mb-1 counter" data-target="98">0</h5>
+                  <h5 class="mb-1 counter" data-target={{ global_school_stats.form_four }}>0</h5>
                   <p class="mb-0 small stats-text">Form Four</p>
                 </div>
               </div>
@@ -564,7 +508,7 @@
                   style="background-color: rgba(157, 252, 192, 0.2)"
                 >
                   <i class="fas fa-users fa-2x mb-3 text-success"></i>
-                  <h5 class="mb-1 counter" data-target="438">0</h5>
+                  <h5 class="mb-1 counter" data-target={{ global_school_stats.total_students }}>0</h5>
                   <p class="mb-0 small stats-text">Total Students</p>
                 </div>
               </div>
@@ -601,22 +545,22 @@
             <h6 class="fw-bold">Quick Links</h6>
             <p>
               <a href="#" class="text-decoration-none"
-                ><i class="fa fa-angle-right me-2"></i>Home</a
+                ><i class="fa fa-angle-right me-2"></i>DJCSS - SR</a
               >
             </p>
             <p>
               <a href="#" class="text-decoration-none"
-                ><i class="fa fa-angle-right me-2"></i>About Us</a
+                ><i class="fa fa-angle-right me-2"></i>HopeCo</a
               >
             </p>
             <p>
               <a href="#" class="text-decoration-none"
-                ><i class="fa fa-angle-right me-2"></i>Academics</a
+                ><i class="fa fa-angle-right me-2"></i>HESLB</a
               >
             </p>
             <p>
               <a href="#" class="text-decoration-none"
-                ><i class="fa fa-angle-right me-2"></i>Admissions</a
+                ><i class="fa fa-angle-right me-2"></i>NECTA</a
               >
             </p>
           </div>

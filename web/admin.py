@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import News, WeeklyProgram
+from .models import News, SchoolStatistics, WeeklyProgram
 
 # Register your models here.
 @admin.register(News)
@@ -17,3 +17,10 @@ class WeeklyProgramAdmin(admin.ModelAdmin):
     list_filter = ('day',)
     search_fields = ('name', 'day')
     ordering = ('display_order', 'day')
+
+@admin.register(SchoolStatistics)
+class SchoolStatisticsAdmin(admin.ModelAdmin):
+    list_display = ('year', 'teachers', 'form_one', 'form_two', 
+                   'form_three', 'form_four', 'total_students', 'last_updated')
+    readonly_fields = ('total_students', 'last_updated')
+    list_editable = ('teachers', 'form_one', 'form_two', 'form_three', 'form_four')

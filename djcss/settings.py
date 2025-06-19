@@ -28,6 +28,7 @@ DEBUG = True
 ALLOWED_HOSTS = [
     '192.168.0.13',
     '127.0.0.1',
+    '10.91.18.90',
     '10.20.75.103',
 ]
 
@@ -69,7 +70,9 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'web.context_processors.weekly_programs',  # Custom context processor
+
+                # Custom context processors
+                'web.context_processors.global_context'
 
             ],
         },
