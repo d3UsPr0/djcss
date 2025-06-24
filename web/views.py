@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.utils import timezone
-from .models import News, SchoolStatistics, WeeklyProgram
+from .models import News, Staff, SchoolStatistics, WeeklyProgram
 from django.shortcuts import get_object_or_404
 
 def home(request):
@@ -19,4 +19,9 @@ def news_detail(request, slug):
         ).exclude(slug=slug).order_by('-publish_date')[:3]
     }
     return render(request, 'web/news_detail.html', context)
+
+def staff(request):
+    return render(request, 'web/staff.html', {
+        'staff': Staff.objects.all()
+    })
 

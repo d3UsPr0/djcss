@@ -388,6 +388,29 @@ body {
   color: var(--site-purple) !important;
 }
 
+.object-fit-cover {
+  object-fit: cover;
+}
+
+.list-group-item:hover {
+  background-color: #f8f9fa;
+}
+
+.team-member-item {
+  transition: background-color 0.2s ease;
+}
+
+.team-member-item:hover {
+  background-color: #f8f9fa;
+}
+
+.team-member-social a {
+  transition: transform 0.2s ease;
+}
+
+.team-member-social a:hover {
+  transform: translateY(-2px);
+}
 /* Stats Block */
 .stats-block {
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);

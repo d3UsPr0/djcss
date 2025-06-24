@@ -1,5 +1,6 @@
 from django.contrib import admin
-from .models import News, SchoolStatistics, WeeklyProgram
+from django.utils.html import mark_safe
+from .models import News, SchoolStatistics, Staff, WeeklyProgram
 
 # Register your models here.
 @admin.register(News)
@@ -24,3 +25,35 @@ class SchoolStatisticsAdmin(admin.ModelAdmin):
                    'form_three', 'form_four', 'total_students', 'last_updated')
     readonly_fields = ('total_students', 'last_updated')
     list_editable = ('teachers', 'form_one', 'form_two', 'form_three', 'form_four')
+    
+@admin.register(Staff)
+class StaffAdmin(admin.ModelAdmin):
+    list_display = ('name', 'position', 'email', 'display_order', 'photo_preview')
+    list_editable = ('display_order',)
+    list_filter = ('position',)
+    search_fields = ('name', 'position', 'email')
+    readonly_fields = ('photo_preview',)  # Make preview read-only
+    
+    fieldsets = (
+        ('Basic Information', {
+            'fields': ('name', 'position', 'bio', 'display_order')
+        }),
+        ('Contact Information', {
+            'fields': ('email', 'phone'),
+            'classes': ('collapse',)
+        }),
+        ('Social Media', {
+            'fields': ('linkedin', 'twitter'),
+            'classes': ('collapse',)
+        }),
+        ('Profile Image', {
+            'fields': ('photo_preview', 'photo'),
+            'description': 'Upload a square image (800x800px recommended)'
+        })
+    )
+
+    def photo_preview(self, obj):
+        if obj.photo:
+            return mark_safe(f'<img src="{obj.photo.url}" style="max-height: 200px; max-width: 200px;" />')
+        return "No photo uploaded"
+    photo_preview.short_description = 'Current Photo'
