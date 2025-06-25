@@ -193,6 +193,7 @@ body {
   transition: all 0.2s ease;
 }
 
+
 .navbar-wrapper.sticky .close-icon {
   color: white !important;
 }
@@ -248,14 +249,13 @@ body {
   border-radius: 8px;
 }
 
-.news-heading-link {
+.heading {
   color: var(--site-green);
   transition: color 0.3s ease;
 }
 
-.news-heading-link:hover {
+.heading:hover {
   color: var(--site-purple) !important;
-  text-decoration: underline;
 }
 
 .news-bulletin li {
@@ -379,15 +379,6 @@ body {
   transform: scale(1.05);
 }
 
-.staff-profile-link {
-  color: #212529 !important;
-  transition: color 0.3s ease;
-}
-
-.staff-profile-link:hover {
-  color: var(--site-purple) !important;
-}
-
 .object-fit-cover {
   object-fit: cover;
 }
@@ -410,6 +401,18 @@ body {
 
 .team-member-social a:hover {
   transform: translateY(-2px);
+}
+.text-email {
+  color: #EA4335; /* Google-inspired red for email */
+}
+.text-phone {
+  color: #34C759; /* Green commonly used for phone (e.g., iOS call button) */
+}
+.text-twitter {
+  color: #000000; /* Black for X/Twitter */
+}
+.text-linkedin {
+  color: #0A66C2; /* LinkedIn blue */
 }
 /* Stats Block */
 .stats-block {
@@ -625,6 +628,9 @@ body {
 }
 
 /* Dark footer option */
+.fa-clock {
+  color: var(--site-purple);
+}
 .dark-footer {
   background-color: var(--site-purple);
   color: white;

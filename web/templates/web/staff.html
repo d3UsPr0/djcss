@@ -7,7 +7,7 @@
     <div class="card-body p-0">
       {% if staff %}
       <div class="px-4 pt-2">
-        <h4>Meet Our Team</h4>
+        <h4>Our Team</h4>
         <p class="text-muted">
           Dedicated professionals committed to educational excellence
         </p>
@@ -20,7 +20,7 @@
             {% if member.photo %}
             <img
               src="{{ member.photo.url }}"
-              class="rounded-circle object-fit-cover"
+              class="rounded-circle object-fit-cover mx-auto"
               alt="{{ member.name }}"
               style="width: 120px; height: 120px"
             />
@@ -32,6 +32,12 @@
               <i class="fas fa-user fa-3x text-secondary"></i>
             </div>
             {% endif %}
+
+            <!-- Name & Position (Always Centered) -->
+            <div class="mt-3">
+              <h5 class="mb-1 heading" >{{ member.name }}</h5>
+              <p class="mb-3 text-default">{{ member.position }}</p>
+            </div>
           </div>
 
           <div class="d-flex flex-column flex-md-row">
@@ -56,58 +62,40 @@
 
             <!-- Staff Details -->
             <div class="flex-grow-1 mt-2 mt-md-0">
-              <div class="d-flex flex-column flex-md-row justify-content-between align-items-start">
-                <div class="text-center text-md-start">
-                  <h5 class="mb-1" style="font-weight: 600">
-                    {{ member.name }}
-                  </h5>
-                  <p class="mb-2 text-primary">{{ member.position }}</p>
-                </div>
-
-                <!-- Social Links -->
-                <div class="team-member-social text-center text-md-end mt-2 mt-md-0">
-                  {% if member.linkedin %}
-                  <a
-                    href="{{ member.linkedin }}"
-                    class="text-decoration-none ms-2"
-                    target="_blank"
-                  >
-                    <i class="fab fa-linkedin fa-lg" style="color: #0077b5"></i>
-                  </a>
-                  {% endif %} 
-                  {% if member.twitter %}
-                  <a
-                    href="{{ member.twitter }}"
-                    class="text-decoration-none ms-2"
-                    target="_blank"
-                  >
-                    <i class="fab fa-twitter fa-lg" style="color: #1da1f2"></i>
-                  </a>
-                  {% endif %}
-                </div>
+              <!-- Desktop Name & Position -->
+              <div class="d-none d-md-block">
+                <h5 class="heading">{{ member.name }}</h5>
+                <p class="text-default">{{ member.position }}</p>
               </div>
 
               <!-- Bio Section -->
-              <div class="mt-2 text-center text-md-start">
-                <p class="mb-0 text-muted" style="line-height: 1.6">
+              <div class="text-center text-md-start">
+                <p class="text-muted">
                   {{ member.bio|linebreaksbr }}
                 </p>
               </div>
 
-              <!-- Contact Info -->
-              <div class="mt-2 text-center text-md-start">
+              <!-- Contact Icons -->
+              <div class="d-flex justify-content-center justify-content-md-start gap-3">
                 {% if member.email %}
-                <a
-                  href="mailto:{{ member.email }}"
-                  class="text-decoration-none small me-3"
-                >
-                  <i class="fas fa-envelope me-1"></i> {{ member.email }}
+                <a href="mailto:{{ member.email }}" class="text-decoration-none" title="Email">
+                  <i class="fas fa-envelope fa-lg text-email"></i>
                 </a>
-                {% endif %} 
+                {% endif %}
                 {% if member.phone %}
-                <span class="small me-3">
-                  <i class="fas fa-phone me-1"></i> {{ member.phone }}
-                </span>
+                <a href="tel:{{ member.phone }}" class="text-decoration-none" title="Phone">
+                  <i class="fas fa-phone fa-lg text-phone"></i>
+                </a>
+                {% endif %}
+                {% if member.twitter %}
+                <a href="{{ member.twitter }}" class="text-decoration-none" target="_blank" title="X (Twitter)">
+                  <i class="fab fa-x-twitter fa-lg text-twitter"></i>
+                </a>
+                {% endif %}
+                {% if member.linkedin %}
+                <a href="{{ member.linkedin }}" class="text-decoration-none" target="_blank" title="LinkedIn">
+                  <i class="fab fa-linkedin fa-lg text-linkedin"></i>
+                </a>
                 {% endif %}
               </div>
             </div>
@@ -117,14 +105,19 @@
         <!-- Divider -->
         {% if not forloop.last %}
         <div class="px-4">
-          <div style="height: 1px; background-color: #e9ecef; width: 60px; margin: 1rem auto 1rem auto;" class="d-block d-md-none"></div>
-          <div style="height: 1px; background-color: #e9ecef; width: 60px; margin: 1rem 0 1rem 124px;" class="d-none d-md-block"></div>
+          <div
+            style="
+              height: 1px;
+              background-color: #e9ecef;
+              width: 60px;
+              margin: 1.5rem auto;
+            "
+          ></div>
         </div>
-        {% endif %} 
-        {% endfor %}
+        {% endif %} {% endfor %}
       </div>
       {% else %}
-      <div class="alert alert-info m-4">No team members listed yet.</div>
+      <div class="alert alert-info m-4">No staff listed yet.</div>
       {% endif %}
     </div>
   </div>
