@@ -564,8 +564,9 @@ body {
   margin: 0 auto;
 }
 
-/* Responsive Adjustments */
+/* Responsive Adjustments - Merged */
 @media (max-width: 991.98px) {
+  /* Navbar adjustments */
   #navbarNav {
     text-align: center;
   }
@@ -608,9 +609,8 @@ body {
     opacity: 1;
     visibility: visible;
   }
-}
 
-@media (max-width: 767.98px) {
+  /* School header adjustments (originally in 767.98px) */
   .school-header > div {
     width: 90% !important;
   }
@@ -618,13 +618,24 @@ body {
   .school-title {
     font-size: 1.5rem;
   }
+}
 
+@media (max-width: 767.98px) {
+  /* Keep these specific to smaller screens */
   .rounded-img {
     width: 15vw;
     height: 15vw;
     max-width: 100px;
     max-height: 100px;
   }
+  .footer p, .footer .heading {
+    margin-bottom: 0.75rem;
+  }
+  .footer .col-12 {
+    margin-bottom: 1.5rem !important;
+  }
+  
+  /* You could add any other mobile-specific styles here */
 }
 
 /* Dark footer option */
@@ -654,4 +665,12 @@ body {
 
 .dark-footer .designer-link:hover {
   color: #d6b1f6 !important;
+}
+
+.divider {
+  height: 3px;
+  background-color: var(--site-purple);
+  width: 80px;
+  margin: 1.5rem auto;
+  opacity: 0.5;
 }
