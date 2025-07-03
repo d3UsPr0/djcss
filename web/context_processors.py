@@ -1,6 +1,6 @@
 # web/context_processors.py
 from django.utils import timezone
-from .models import News, WeeklyProgram, SchoolStatistics
+from .models import News, Prayer, WeeklyProgram, SchoolStatistics
 
 def global_context(request):
     """Makes these variables available in all templates"""
@@ -25,11 +25,19 @@ def global_context(request):
     school_stats = SchoolStatistics.objects.filter(year=current_year).first()
     if not school_stats:
         school_stats = SchoolStatistics.objects.create(year=current_year)
+        
+    prayers = Prayer.get_current_week_prayers()
+    current_week_title = prayers[0].week_title if prayers.exists() else ""
     
+    
+     
     return {
         'global_featured_news': featured_news,
         'global_bulletins': bulletins,
         'global_weekly_programs': weekly_programs,
         'global_school_stats': school_stats,
-        'global_current_year': current_year
+        'global_current_year': current_year,
+        'prayers': prayers,
+        'current_week_title': current_week_title
     }
+    

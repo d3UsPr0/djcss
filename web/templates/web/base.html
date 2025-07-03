@@ -256,9 +256,10 @@
             </div>
             <div class="card-body text-center">
               <img
-                src="https://randomuser.me/api/portraits/men/75.jpg"
+                src="{% static "web/staff_photos/Patrick.jpg" %}"
                 alt="Headmaster"
                 class="rounded-img"
+                style="width: 120px; height: 120px"
               />
               <h5 class="mb-1">
                Patrick Pius
@@ -268,8 +269,8 @@
                 Welcome to Dr. John Chacha Secondary School. We are committed to
                 excellence in education and character formation...
               </p>
-              <a href="#" class="btn btn-link text-success"
-                >Read More <i class="bi bi-arrow-right"></i
+              <a href="{% url 'read_more' %}" class="btn btn-link text-success"
+                >Read more <i class="bi bi-arrow-right"></i
               ></a>
             </div>
           </div>
@@ -321,7 +322,7 @@
             <div class="card-body">
               <!-- Staff Member 1 -->
               <div class="d-flex align-items-center mb-3">
-                <img src="{% static "web/staff/Baraka.jpg" %}"
+                <img src="{% static "web/staff_photos/Lauliani.jpg" %}"
                 class="rounded-img me-3" alt="" />
                 <div>
                   <div class="fw-bold">
@@ -338,7 +339,7 @@
               <!-- Staff Member 2 -->
               <div class="d-flex align-items-center mb-3">
                 <img
-                  src="https://via.placeholder.com/40"
+                  src="{% static "web/staff_photos/Baraka.jpg" %}"
                   class="rounded-img me-3"
                   alt=""
                 />
@@ -361,52 +362,72 @@
             </div>
           </div>
         </div>
+        
         <div class="col-md-4">
           <div class="card mb-3 border-0">
             <div class="card-header card-header-custom">
-              <i class="fas fa-bell me-2"></i>Announcements
+              <i class="fas fa-pray me-2"></i>Weekly Prayers
             </div>
-            <div class="card-body">
-              <ul class="list-unstyled announcement-list">
-                <li class="mb-3">
-                  <a href="#" class="text-decoration-none text-dark">
-                    <i class="fas fa-bullhorn text-primary me-2"></i>
-                    <strong>School Closure</strong> - May 25th (Holiday)
-                  </a>
-                </li>
-                <li class="mb-3">
-                  <a href="#" class="text-decoration-none text-dark">
-                    <i class="fas fa-calendar-check text-success me-2"></i>
-                    <strong>Exam Schedule</strong> - Posted on notice board
-                  </a>
-                </li>
-                <li class="mb-3">
-                  <a href="#" class="text-decoration-none text-dark">
-                    <i class="fas fa-trophy text-warning me-2"></i>
-                    <strong>Sports Day</strong> - June 1st at 9 AM
-                  </a>
-                </li>
-                <li class="mb-3">
-                  <a href="#" class="text-decoration-none text-dark">
-                    <i class="fas fa-calendar-check text-success me-2"></i>
-                    <strong>Parents Meeting</strong> - Posted on notice board
-                  </a>
-                </li>
-              </ul>
-              <div class="d-flex justify-content-center">
+            <div class="card-body position-relative">
+              <!-- Week Title -->
+              <h6 class="text-center mb-3 text-muted">{{ current_week_title }}</h6>
+              
+              <!-- Carousel -->
+              <div id="prayerCarousel" class="carousel slide" data-bs-ride="carousel">
+                <!-- Slides -->
+                <div class="carousel-inner">
+                  {% for prayer in prayers %}
+                  <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                    <div class="prayer-slide text-center px-4 pb-4">
+                      <div class="fw-bold" style="color: var(--site-green)">{{ prayer.day }}</div>
+                      <h5 class="mt-2">{{ prayer.title }}</h5>
+                      <p class="mb-3 small text-muted px-3">
+                        {{ prayer.description }}
+                      </p>
+                    </div>
+                  </div>
+                  {% empty %}
+                  <div class="carousel-item active">
+                    <div class="text-center p-5 text-muted">
+                      No prayers scheduled for this week
+                    </div>
+                  </div>
+                  {% endfor %}
+                </div>
+                
+                <!-- Custom Purple Arrows - Round Style -->
+                {% if prayers|length > 1 %}
+                <button class="carousel-control-prev" type="button" data-bs-target="#prayerCarousel" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon rounded-circle d-flex align-items-center justify-content-center" 
+                        style="background-color: var(--site-purple); width: 30px; height: 30px;" 
+                        aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#prayerCarousel" data-bs-slide="next">
+                  <span class="carousel-control-next-icon rounded-circle d-flex align-items-center justify-content-center" 
+                        style="background-color: var(--site-purple); width: 30px; height: 30px;" 
+                        aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+                {% endif %}
+              </div>
+              
+              <!-- Footer Button -->
+              <div class="d-flex justify-content-center mt-3">
                 <a href="#" class="btn btn-outline-success btn-sm">
-                  <i class="fas fa-list me-1"></i> View All Announcements
+                  <i class="fas fa-calendar-alt me-1"></i> View All Prayers
                 </a>
               </div>
             </div>
           </div>
         </div>
-        <div class="col-md-4">
+
+    <div class="col-md-4">
     <div class="card mb-3 shadow-sm border-0">
         <div class="card-header card-header-custom">
             <i class="fas fa-calendar-week me-2"></i> Programs This Week
         </div>
-        <div class="card-body p-0" style="height: 200px; overflow: hidden; position: relative;">
+        <div class="card-body p-0" style="height: 300px; overflow: hidden; position: relative;">
             <div class="marquee-vertical">
                 <ul class="list-unstyled mb-0 program-list ps-2">
                     {% for program in global_weekly_programs %}

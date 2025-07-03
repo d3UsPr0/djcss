@@ -167,3 +167,31 @@ class Staff(models.Model):
         
     def __str__(self):
         return f"{self.name} - {self.position}"
+    
+class Prayer(models.Model):
+    DAY_CHOICES = [
+        ('Monday', 'Monday'),
+        ('Tuesday', 'Tuesday'),
+        ('Wednesday', 'Wednesday'),
+        ('Thursday', 'Thursday'),
+        ('Friday', 'Friday'),
+    ]
+    
+    week_title = models.CharField(max_length=100)
+    day = models.CharField(max_length=10, choices=DAY_CHOICES)
+    title = models.CharField(max_length=200)
+    description = models.TextField()
+    prayer_date = models.DateField()
+    
+    class Meta:
+        ordering = ['prayer_date']
+    
+    def __str__(self):
+        return f"{self.week_title} - {self.day}"
+    
+    @classmethod
+    def get_current_week_prayers(cls):
+        today = timezone.now().date()
+        start_week = today - timezone.timedelta(days=today.weekday())
+        end_week = start_week + timezone.timedelta(days=6)
+        return cls.objects.filter(prayer_date__range=[start_week, end_week])

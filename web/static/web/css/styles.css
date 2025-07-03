@@ -674,3 +674,34 @@ body {
   margin: 1.5rem auto;
   opacity: 0.5;
 }
+
+    /* Custom arrow styling */
+    .carousel-control-prev,
+    .carousel-control-next {
+      width: auto; /* Remove default width */
+      opacity: 1;
+    }
+    
+    /* Center arrow icons in their circles */
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+      background-size: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    /* Ensure proper spacing for content */
+    .prayer-slide {
+      min-height: 200px;
+      padding-left: 2.5rem;
+      padding-right: 2.5rem;
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .prayer-slide {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+      }
+    }

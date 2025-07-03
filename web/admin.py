@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.utils.html import mark_safe
-from .models import News, SchoolStatistics, Staff, WeeklyProgram
+from .models import News, Prayer, SchoolStatistics, Staff, WeeklyProgram
 
 # Register your models here.
 @admin.register(News)
@@ -57,3 +57,19 @@ class StaffAdmin(admin.ModelAdmin):
             return mark_safe(f'<img src="{obj.photo.url}" style="max-height: 200px; max-width: 200px;" />')
         return "No photo uploaded"
     photo_preview.short_description = 'Current Photo'
+
+@admin.register(Prayer)
+class PrayerAdmin(admin.ModelAdmin):
+    list_display = ('week_title', 'day', 'title', 'prayer_date')
+    list_filter = ('day', 'prayer_date')
+    search_fields = ('title', 'description')
+    date_hierarchy = 'prayer_date'
+    
+    fieldsets = (
+        (None, {
+            'fields': ('week_title', 'day', 'prayer_date')
+        }),
+        ('Content', {
+            'fields': ('title', 'description')
+        }),
+    )
