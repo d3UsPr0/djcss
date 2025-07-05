@@ -1,20 +1,29 @@
 # web/context_processors.py
 from django.utils import timezone
+from django.db.models import Q
 from .models import News, Prayer, WeeklyProgram, SchoolStatistics
 
 def global_context(request):
     """Makes these variables available in all templates"""
-    # Get 3 latest featured news
+    # Get 3 latest events
     featured_news = News.objects.filter(
-        is_featured=True,
-        is_published=True,
-        publish_date__lte=timezone.now()
-    ).order_by('-publish_date')[:3]
+    is_published=True,  # Must be published
+    publish_date__lte=timezone.now(),
+    category="events"  # Only include events category
+    ).exclude(
+    ).order_by(
+    '-is_featured',  # Featured items first (True comes before False)
+    '-publish_date'   # Then sort by newest first
+    )[:3]  # Adjust limit as needed
+    
+
     
     # Get all news for bulletins
     bulletins = News.objects.filter(
         is_published=True,
         publish_date__lte=timezone.now()
+    ).exclude(
+    category="events"  # Exclude this category
     ).order_by('-is_featured', '-publish_date')
     
     # Get weekly programs

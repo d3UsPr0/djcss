@@ -28,3 +28,11 @@ def staff(request):
 def read_more(request):
     return render(request, 'web/welcome.html')
 
+def bulletins(request):
+    return render(request, 'web/news.html')
+
+def events(request):
+    return render(request, 'web/events.html')
+
+def prayers(request):
+    return render(request, 'web/prayers.html')

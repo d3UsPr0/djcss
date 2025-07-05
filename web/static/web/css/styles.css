@@ -321,7 +321,7 @@ body {
 .highlight-animation {
   background: linear-gradient(90deg, 
             transparent 0%, 
-            rgba(255, 193, 7, 0.4) 50%, 
+            rgba(25, 135, 84, 0.5) 50%, 
             transparent 100%);
   background-size: 200% 100%;
   animation: highlightBlink 2s ease-in-out 1;
@@ -639,13 +639,14 @@ body {
 }
 
 /* Dark footer option */
-.fa-clock {
+.fa-clock .fa-praying-hands{
   color: var(--site-purple);
 }
 .dark-footer {
   background-color: var(--site-purple);
   color: white;
 }
+
 
 .dark-footer a {
   color: #ddd;
@@ -696,6 +697,22 @@ body {
       min-height: 200px;
       padding-left: 2.5rem;
       padding-right: 2.5rem;
+    }
+
+    .prayer-item:hover {
+      background-color: #f8f9fa;
+      border-radius: 8px;
+      transition: background-color 0.2s ease;
+    }
+    .prayer-list {
+      padding-left: 0;
+    }
+    .heading {
+      font-weight: 500;
+      color: #333;
+    }
+    .fa-praying-hands {
+      color: var(--site-purple) !important;
     }
     
     /* Responsive adjustments */
