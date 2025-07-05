@@ -1,0 +1,62 @@
+{% extends "web/base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="col-md-8 d-flex">
+  <div class="card w-100 shadow-sm border-0">
+    <div class="card-header card-header-custom">
+        <i class="fas fa-book-reader me-2"></i>Reading on ...
+      </div>
+    <div class="card-body">
+      <h4 class="mb-3" id='newsDetailTitle'>Our Channel Videos</h4>
+      <ul class="list-unstyled video-list">
+        {% for video in youtube_videos %}
+        <li class="mb-3 video-item">
+          <div class="d-flex">
+            <div class="me-3 flex-shrink-0">
+              <a href="#" target="_blank">
+                <img src="{{ video.thumbnail }}" 
+                     alt="{{ video.title }}" 
+                     class="rounded" 
+                     width="120" 
+                     height="90"
+                     style="object-fit: cover;">
+              </a>
+            </div>
+            <div class="flex-grow-1">
+              <div class="d-flex justify-content-between align-items-start">
+                <div>
+                  <a href="#" target="_blank" class="text-decoration-none">
+                    <h6 class="mb-1 heading">{{ video.title }}</h6>
+                  </a>
+                  <small class="text-muted">
+                    <i class="far fa-clock me-1"></i>
+                    {{ video.duration }} • {{ video.published_at|date:"M d, Y" }}
+                  </small>
+                </div>
+                <span class="badge bg-light text-dark small">{{ video.view_count }} views</span>
+              </div>
+              <p class="small text-muted mb-0 mt-1">
+                {{ video.description|truncatewords:15 }}
+              </p>
+            </div>
+          </div>
+        </li>
+        {% empty %}
+        <li class="text-center text-muted py-3">
+          No videos available
+        </li>
+        {% endfor %}
+      </ul>
+      <div class="d-flex justify-content-center">
+        <a href="https://www.youtube.com/@dr.johnchachasecondaryscho6984" 
+           target="_blank" 
+           class="btn btn-outline-danger btn-sm">
+          <i class="fab fa-youtube me-1"></i> View Channel
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}

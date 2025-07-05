@@ -669,7 +669,7 @@ body {
 }
 
 .divider {
-  height: 3px;
+  height: 2px;
   background-color: var(--site-purple);
   width: 80px;
   margin: 1.5rem auto;
@@ -707,12 +707,45 @@ body {
     .prayer-list {
       padding-left: 0;
     }
-    .heading {
-      font-weight: 500;
-      color: #333;
-    }
     .fa-praying-hands {
       color: var(--site-purple) !important;
+    }
+
+    .video-item:hover {
+      background-color: #f8f9fa;
+      border-radius: 8px;
+      transition: background-color 0.2s ease;
+    }
+    .video-list {
+      padding-left: 0;
+    }
+    .btn-outline-danger {
+      border-color: #ff0000;
+      color: #ff0000;
+    }
+    .btn-outline-danger:hover {
+      background-color: #ff0000;
+      color: white;
+    }
+
+    .contact-item {
+      border: 1px solid rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+      height: 100%;
+    }
+    .contact-item:hover {
+      box-shadow: 0 0.125rem 0.25rem rgba(0,0,0,0.075);
+    }
+    .social-links .btn {
+      width: 36px;
+      height: 36px;
+      padding: 0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .card-footer {
+      border-top: 1px solid rgba(0,0,0,0.1);
     }
     
     /* Responsive adjustments */

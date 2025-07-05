@@ -49,7 +49,7 @@
             ><i class="fa fa-globe me-1 text-white"></i>English</a
           >
           <a href="#" class="me-2 text-white text-decoration-none">FAQ</a>
-          <a href="#" class="text-white text-decoration-none">Contact</a>
+          <a href="{% url "contact-us" %}" class="text-white text-decoration-none">Contact</a>
         </div>
       </div>
     </div>
@@ -120,7 +120,7 @@
               <li class="nav-item px-2">
                 <a class="nav-link" href="{% url "home" %}">Home</a>
               </li>
-              <li class="nav-item px-2 dropdown">
+              {% comment %} <li class="nav-item px-2 dropdown">
                 <a
                   class="nav-link dropdown-toggle"
                   href="#"
@@ -136,12 +136,12 @@
                   <li><a class="dropdown-item" href="#">Mission</a></li>
                   <li><a class="dropdown-item" href="#">Vision</a></li>
                 </ul>
+              </li> {% endcomment %}
+              <li class="nav-item px-2">
+                <a class="nav-link" href="{% url "academics" %}">Academics</a>
               </li>
               <li class="nav-item px-2">
-                <a class="nav-link" href="#">Academics</a>
-              </li>
-              <li class="nav-item px-2">
-                <a class="nav-link" href="#">Admissions</a>
+                <a class="nav-link" href="{% url "admissions" %}">Admissions</a>
               </li>
               <li class="nav-item px-2 dropdown">
                 <a
@@ -155,12 +155,12 @@
                   >Media</a
                 >
                 <ul class="dropdown-menu" aria-labelledby="mediaDropdown">
-                  <li><a class="dropdown-item" href="#">Gallery</a></li>
-                  <li><a class="dropdown-item" href="#">Videos</a></li>
+                  <li><a class="dropdown-item" href="{% url "gallery" %}">Gallery</a></li>
+                  <li><a class="dropdown-item" href="{% url "videos" %}">Videos</a></li>
                 </ul>
               </li>
               <li class="nav-item px-2">
-                <a class="nav-link" href="#">Contact</a>
+                <a class="nav-link" href="{% url "contact-us" %}">Contact</a>
               </li>
             </ul>
           </div>

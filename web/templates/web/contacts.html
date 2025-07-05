@@ -1,0 +1,85 @@
+{% extends "web/base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="col-md-8 d-flex">
+  <div class="card w-100 shadow-sm border-0">
+    <div class="card-header card-header-custom">
+        <i class="fas fa-book-reader me-2"></i>Reading on ...
+      </div>
+    <div class="card-body">
+        <h4 id="newsDetailTitle" class="mb-3">Contact Information</h4>
+      <div class="row">
+        <!-- Contact Details Column -->
+        <div class="col-md-6 mb-4 mb-md-0">
+          <div class="contact-item p-3 h-100 rounded">
+            <h6 class="fw-bold mb-3" style="color: var(--site-green)">
+              <i class="fas fa-map-marker-alt me-2"></i>Our Location
+            </h6>
+            <p class="mb-4"> Dr. John Chacha Secondary School<br>
+              P.O. Box 457<br>
+              Tarime, Tanzania
+            </p>
+            
+            <h6 class="fw-bold mb-3" style="color: var(--site-green)">
+              <i class="fas fa-clock me-2"></i>Work hours
+            </h6>
+            <ul class="list-unstyled mb-0">
+              <li class="mb-2">Monday - Friday: <br> 07:30 AM - 04:00 PM</li>
+              <li class="mb-2">Saturday - Sunday: <br> 08:00 AM - 02:00 PM</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Contact Methods Column -->
+        <div class="col-md-6">
+          <div class="contact-item p-3 h-100 rounded">
+            <h6 class="fw-bold mb-3" style="color: var(--site-green)">
+              <i class="fas fa-phone-alt me-2"></i>Get In Touch
+            </h6>
+            <ul class="list-unstyled">
+              <li class="mb-3">
+                <i class="fas fa-phone text-primary me-2"></i>
+                <strong>Phone:</strong> +255 755 405 492
+              </li>
+              <li class="mb-3">
+                <i class="fas fa-envelope text-primary me-2"></i>
+                <strong>Email:</strong> drjcss2017@gmail.com
+              </li>
+              <li class="mb-3">
+                <i class="fab fa-whatsapp text-success me-2"></i>
+                <strong>WhatsApp:</strong> +255 755 405 492
+              </li>
+            </ul>
+
+            <h6 class="fw-bold mt-4 mb-3" style="color: var(--site-green)">
+              <i class="fas fa-share-alt me-2"></i>Connect With Us
+            </h6>
+            <div class="social-links">
+              <a href="#" class="btn btn-sm btn-outline-primary me-2 mb-2">
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              <a href="#" class="btn btn-sm btn-outline-info me-2 mb-2">
+                <i class="fab fa-twitter"></i>
+              </a>
+              <a href="#" class="btn btn-sm btn-outline-danger me-2 mb-2">
+                <i class="fab fa-youtube"></i>
+              </a>
+              <a href="#" class="btn btn-sm btn-outline-secondary mb-2">
+                <i class="fab fa-instagram"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Footer with quick action -->
+    <div class="card-footer bg-white text-center py-3">
+      <a href="#" class="btn btn-success btn-sm">
+        <i class="fas fa-directions me-1"></i> Get Directions
+      </a>
+    </div>
+  </div>
+</div>
+{% endblock %}

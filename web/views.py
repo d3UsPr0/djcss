@@ -36,3 +36,18 @@ def events(request):
 
 def prayers(request):
     return render(request, 'web/prayers.html')
+
+def videos(request):
+    return render(request, 'web/videos.html')
+
+def contact(request):
+    return render(request, 'web/contacts.html')
+
+def admissions(request):
+    return render(request, 'web/admission.html')
+
+def academics(request):
+    return render(request, 'web/academics.html')
+
+def gallery(request):
+    return render(request, 'web/gallery.html')

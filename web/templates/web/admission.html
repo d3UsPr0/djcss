@@ -1,0 +1,21 @@
+{% extends "web/base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="col-md-8 d-flex">
+  <div class="card w-100 shadow-sm border-0">
+    <div class="card-header card-header-custom">
+        <i class="fas fa-book-reader me-2"></i>Reading on ...
+      </div>
+    <div class="card-body">
+      <h4 class="mb-3" id='newsDetailTitle'>Admission guideline</h4>
+      <ul class="list-unstyled video-list">
+        <li class="text-center text-muted py-3">
+          Please go to <a href="{% url "contact-us" %}" class="text-decoration-none heading">Contacts page</a> for admission issues.
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}
