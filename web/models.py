@@ -85,9 +85,8 @@ class WeeklyProgram(models.Model):
         default='text-primary',
         help_text="Color for the program icon"
     )
-    
-    name = models.CharField(max_length=100, help_text="E.g. Sports Day, Debate, etc.")
     day = models.CharField(max_length=10, choices=DAY_CHOICES)
+    name = models.CharField(max_length=100, help_text="E.g. Sports Day, Debate, etc.")
     icon = models.CharField(max_length=50, choices=ICON_CHOICES, default='fas fa-calendar-day')
     display_order = models.PositiveSmallIntegerField(default=0)
 

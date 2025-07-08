@@ -75,7 +75,8 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
 
                 # Custom context processors
-                'web.context_processors.global_context'
+                'web.context_processors.global_context',
+                'django.template.context_processors.media',
 
             ],
         },

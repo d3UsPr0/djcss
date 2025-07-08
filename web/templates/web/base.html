@@ -255,7 +255,7 @@
             </div>
             <div class="card-body text-center">
               <img
-                src="{% static "web/staff_photos/Patrick.jpg" %}"
+                src="{{ MEDIA_URL }}staff_photos/Patrick.jpg"
                 alt="Headmaster"
                 class="rounded-img"
                 style="width: 120px; height: 120px"
@@ -329,8 +329,8 @@
             <div class="card-body">
               <!-- Staff Member 1 -->
               <div class="d-flex align-items-center mb-3">
-                <img src="{% static "web/staff_photos/Lauliani.jpg" %}"
-                class="rounded-img me-3" alt="" />
+                <img src="{{ MEDIA_URL }}staff_photos/Lauliani.jpg"
+                class="rounded-img me-3" alt="Deputy Headmaster" />
                 <div>
                   <div class="fw-bold">
                     <a
@@ -346,9 +346,9 @@
               <!-- Staff Member 2 -->
               <div class="d-flex align-items-center mb-3">
                 <img
-                  src="{% static "web/staff_photos/Baraka.jpg" %}"
+                  src="{{ MEDIA_URL }}staff_photos/Baraka.jpg"
                   class="rounded-img me-3"
-                  alt=""
+                  alt="Academic Master"
                 />
                 <div>
                   <div class="fw-bold">

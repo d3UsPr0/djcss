@@ -747,7 +747,7 @@ body {
     .card-footer {
       border-top: 1px solid rgba(0,0,0,0.1);
     }
-    
+
     /* Responsive adjustments */
     @media (max-width: 768px) {
       .prayer-slide {
