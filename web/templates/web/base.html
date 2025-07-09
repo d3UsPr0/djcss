@@ -391,6 +391,9 @@
                       <p class="mb-3 small text-muted px-3">
                         {{ prayer.description }}
                       </p>
+                      {% if prayer.scripture_reference %}
+                      <i class="fas fa-book-open me-2 text-success"></i><small class="text-muted"><i>Scripture(s): {{ prayer.scripture_reference }}</i></small>
+                      {% endif %}
                     </div>
                   </div>
                   {% empty %}
@@ -652,7 +655,7 @@
         <div class="text-center py-2">
           <small class="designer-credit-line">
             Designed with <i class="fa fa-heart text-danger"></i> by
-            <a href="#">Deus</a>
+            <a href="https://deem.com" target="_blank">Deus</a>
           </small>
         </div>
       </div>

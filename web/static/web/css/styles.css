@@ -533,6 +533,9 @@ body {
   display: block;
   margin-top: 0.5rem;
 }
+.designer-credit-line a {
+ color:var(--site-green)
+}
 
 /* Utility Classes */
 .text-purple {

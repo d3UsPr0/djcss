@@ -27,6 +27,9 @@
                 <p class="small text-muted mb-0">
                   {{ prayer.description }}
                 </p>
+                {% if prayer.scripture_reference %}
+                <i class="fas fa-book-open me-2 text-success"></i><small class="text-muted"><i>Scripture(s): {{ prayer.scripture_reference }}</i></small>
+                {% endif %}
               </div>
             </div>
           </li>

@@ -180,6 +180,7 @@ class Prayer(models.Model):
     day = models.CharField(max_length=10, choices=DAY_CHOICES)
     title = models.CharField(max_length=200)
     description = models.TextField()
+    scripture_reference = models.CharField(max_length=200, blank=True, null=True)
     prayer_date = models.DateField()
     
     class Meta:

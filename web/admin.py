@@ -70,6 +70,6 @@ class PrayerAdmin(admin.ModelAdmin):
             'fields': ('week_title', 'day', 'prayer_date')
         }),
         ('Content', {
-            'fields': ('title', 'description')
+            'fields': ('title', 'description', 'scripture_reference'),
         }),
     )
