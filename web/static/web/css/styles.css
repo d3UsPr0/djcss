@@ -60,7 +60,6 @@ body {
   display: flex;
   justify-content: center;
   transition: all 0.3s ease;
-  
 }
 
 .navbar-custom {
@@ -193,7 +192,6 @@ body {
   transition: all 0.2s ease;
 }
 
-
 .navbar-wrapper.sticky .close-icon {
   color: white !important;
 }
@@ -254,6 +252,12 @@ body {
   transition: color 0.3s ease;
 }
 
+#newsDetailTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--site-green);
+}
+
 .heading:hover {
   color: var(--site-purple) !important;
 }
@@ -301,9 +305,15 @@ body {
 }
 
 @keyframes blink {
-  0% { opacity: 1; }
-  50% { opacity: 0; }
-  100% { opacity: 1; }
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 /* Program List Styling */
 .program-list {
@@ -319,10 +329,12 @@ body {
 }
 
 .highlight-animation {
-  background: linear-gradient(90deg, 
-            transparent 0%, 
-            rgba(25, 135, 84, 0.5) 50%, 
-            transparent 100%);
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(25, 135, 84, 0.5) 50%,
+    transparent 100%
+  );
   background-size: 200% 100%;
   animation: highlightBlink 2s ease-in-out 1;
   /* border-bottom: 1px solid var(--site-purple) !important; */
@@ -403,16 +415,16 @@ body {
   transform: translateY(-2px);
 }
 .text-email {
-  color: #EA4335; /* Google-inspired red for email */
+  color: #ea4335; /* Google-inspired red for email */
 }
 .text-phone {
-  color: #34C759; /* Green commonly used for phone (e.g., iOS call button) */
+  color: #34c759; /* Green commonly used for phone (e.g., iOS call button) */
 }
 .text-twitter {
   color: #000000; /* Black for X/Twitter */
 }
 .text-linkedin {
-  color: #0A66C2; /* LinkedIn blue */
+  color: #0a66c2; /* LinkedIn blue */
 }
 /* Stats Block */
 .stats-block {
@@ -439,21 +451,20 @@ body {
 
 /* Marquee */
 .marquee-vertical {
-        position: absolute;
-        width: 100%;
-        animation: marqueeVertical 30s linear infinite;
-      }
+  position: absolute;
+  width: 100%;
+  animation: marqueeVertical 30s linear infinite;
+}
 
-      @keyframes marqueeVertical {
-        0% {
-          transform: translateY(0); /* Move upward */
-        }
-        100% {
-          transform: translateY(calc(-100% + 200px)); /* Start below */
-          
-        }
-      }
-      
+@keyframes marqueeVertical {
+  0% {
+    transform: translateY(0); /* Move upward */
+  }
+  100% {
+    transform: translateY(calc(-100% + 200px)); /* Start below */
+  }
+}
+
 .card-body:hover .marquee-vertical {
   animation-play-state: paused;
 }
@@ -628,25 +639,25 @@ body {
     max-width: 100px;
     max-height: 100px;
   }
-  .footer p, .footer .heading {
+  .footer p,
+  .footer .heading {
     margin-bottom: 0.75rem;
   }
   .footer .col-12 {
     margin-bottom: 1.5rem !important;
   }
-  
+
   /* You could add any other mobile-specific styles here */
 }
 
 /* Dark footer option */
-.fa-clock .fa-praying-hands{
+.fa-clock .fa-praying-hands {
   color: var(--site-purple);
 }
 .dark-footer {
   background-color: var(--site-purple);
   color: white;
 }
-
 
 .dark-footer a {
   color: #ddd;
@@ -676,82 +687,82 @@ body {
   opacity: 0.5;
 }
 
-    /* Custom arrow styling */
-    .carousel-control-prev,
-    .carousel-control-next {
-      width: auto; /* Remove default width */
-      opacity: 1;
-    }
-    
-    /* Center arrow icons in their circles */
-    .carousel-control-prev-icon,
-    .carousel-control-next-icon {
-      background-size: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    
-    /* Ensure proper spacing for content */
-    .prayer-slide {
-      min-height: 200px;
-      padding-left: 2.5rem;
-      padding-right: 2.5rem;
-    }
+/* Custom arrow styling */
+.carousel-control-prev,
+.carousel-control-next {
+  width: auto; /* Remove default width */
+  opacity: 1;
+}
 
-    .prayer-item:hover {
-      background-color: #f8f9fa;
-      border-radius: 8px;
-      transition: background-color 0.2s ease;
-    }
-    .prayer-list {
-      padding-left: 0;
-    }
-    .fa-praying-hands {
-      color: var(--site-purple) !important;
-    }
+/* Center arrow icons in their circles */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-size: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-    .video-item:hover {
-      background-color: #f8f9fa;
-      border-radius: 8px;
-      transition: background-color 0.2s ease;
-    }
-    .video-list {
-      padding-left: 0;
-    }
-    .btn-outline-danger {
-      border-color: #ff0000;
-      color: #ff0000;
-    }
-    .btn-outline-danger:hover {
-      background-color: #ff0000;
-      color: white;
-    }
+/* Ensure proper spacing for content */
+.prayer-slide {
+  min-height: 200px;
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;
+}
 
-    .contact-item {
-      border: 1px solid rgba(0,0,0,0.1);
-      transition: all 0.3s ease;
-      height: 100%;
-    }
-    .contact-item:hover {
-      box-shadow: 0 0.125rem 0.25rem rgba(0,0,0,0.075);
-    }
-    .social-links .btn {
-      width: 36px;
-      height: 36px;
-      padding: 0;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .card-footer {
-      border-top: 1px solid rgba(0,0,0,0.1);
-    }
+.prayer-item:hover {
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  transition: background-color 0.2s ease;
+}
+.prayer-list {
+  padding-left: 0;
+}
+.fa-praying-hands {
+  color: var(--site-purple) !important;
+}
 
-    /* Responsive adjustments */
-    @media (max-width: 768px) {
-      .prayer-slide {
-        padding-left: 1.5rem;
-        padding-right: 1.5rem;
-      }
-    }
+.video-item:hover {
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  transition: background-color 0.2s ease;
+}
+.video-list {
+  padding-left: 0;
+}
+.btn-outline-danger {
+  border-color: #ff0000;
+  color: #ff0000;
+}
+.btn-outline-danger:hover {
+  background-color: #ff0000;
+  color: white;
+}
+
+.contact-item {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  height: 100%;
+}
+.contact-item:hover {
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+}
+.social-links .btn {
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.card-footer {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .prayer-slide {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
