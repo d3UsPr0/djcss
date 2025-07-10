@@ -1,7 +1,9 @@
+from django.http import JsonResponse
 from django.shortcuts import render
 from django.utils import timezone
-from .models import News, Prayer, Staff, SchoolStatistics, WeeklyProgram
+from .models import News, Prayer, Publication, Staff, SchoolStatistics, WeeklyProgram
 from django.shortcuts import get_object_or_404
+from django.views.decorators.http import require_POST
 
 def home(request):
     return render(request, 'web/home.html')
@@ -51,3 +53,31 @@ def academics(request):
 
 def gallery(request):
     return render(request, 'web/gallery.html')
+
+def publication_list(request):
+    # Get featured publications first (published and featured)
+    featured = Publication.objects.filter(
+        is_published=True,
+        is_featured=True
+    ).order_by('-date_uploaded')
+    
+    # Then get regular published (non-featured) publications
+    regular = Publication.objects.filter(
+        is_published=True,
+        is_featured=False
+    ).order_by('-date_uploaded')
+    
+    # Combine both querysets (featured first)
+    publications = list(featured) + list(regular)
+    
+    context = {
+        'publications': publications,
+        # 'global_bulletins': your_news_queryset,  # Keep existing context
+    }
+    return render(request, 'web/downloads.html', context)
+
+@require_POST
+def increment_download_count(request, pk):
+    publication = get_object_or_404(Publication, pk=pk)
+    publication.increment_download_count()
+    return JsonResponse({'success': True, 'new_count': publication.download_count})

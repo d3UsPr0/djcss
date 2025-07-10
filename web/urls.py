@@ -14,6 +14,8 @@ urlpatterns = [
     path('admissions/', views.admissions, name='admissions'),
     path('academics/', views.academics, name='academics'),
     path('gallery/', views.gallery, name='gallery'),
+    path('downloads/', views.publication_list, name='downloads'),
+    path('publications/<int:pk>/increment_download/', views.increment_download_count, name='increment_download'),
 
 ]
 

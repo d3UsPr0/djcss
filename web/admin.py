@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.utils.html import mark_safe
-from .models import News, Prayer, SchoolStatistics, Staff, WeeklyProgram
+from .models import News, Prayer, Publication, SchoolStatistics, Staff, WeeklyProgram
 
 # Register your models here.
 @admin.register(News)
@@ -73,3 +73,11 @@ class PrayerAdmin(admin.ModelAdmin):
             'fields': ('title', 'description', 'scripture_reference'),
         }),
     )
+
+@admin.register(Publication)
+class PublicationAdmin(admin.ModelAdmin):
+    list_display = ('title', 'is_published', 'is_featured', 'date_uploaded', 'download_count')
+    list_editable = ('is_published', 'is_featured')  # Quick toggle in list view
+    list_filter = ('is_published', 'is_featured', 'date_uploaded')
+    search_fields = ('title', 'subtitle')
+    date_hierarchy = 'date_uploaded'

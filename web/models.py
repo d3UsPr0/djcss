@@ -195,3 +195,32 @@ class Prayer(models.Model):
         start_week = today - timezone.timedelta(days=today.weekday())
         end_week = start_week + timezone.timedelta(days=6)
         return cls.objects.filter(prayer_date__range=[start_week, end_week])
+class Publication(models.Model):
+    # Core fields (required)
+    title = models.CharField(max_length=200)
+    subtitle = models.CharField(max_length=200, blank=True, null=True)
+    file = models.FileField(upload_to='publications/%Y/%m/%d/')
+    date_uploaded = models.DateTimeField(default=timezone.now)
+    
+    # Publication control flags
+    is_featured = models.BooleanField(default=False, 
+        help_text="Mark as featured to highlight this publication")
+    is_published = models.BooleanField(default=True,
+        help_text="Uncheck to hide this publication from public view")
+    
+    # Automatic tracking
+    download_count = models.PositiveIntegerField(default=0, editable=False)
+
+    class Meta:
+        ordering = ['-date_uploaded']
+        verbose_name = 'Publication'
+        verbose_name_plural = 'Publications'
+
+    def __str__(self):
+        return self.title
+
+    def increment_download_count(self):
+        """Call this when file is downloaded"""
+        self.download_count += 1
+        self.save(update_fields=['download_count'])
+    

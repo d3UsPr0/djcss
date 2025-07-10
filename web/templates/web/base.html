@@ -160,6 +160,9 @@
                 </ul>
               </li>
               <li class="nav-item px-2">
+                <a class="nav-link" href="{% url "downloads" %}">Downloads</a>
+              </li>
+              <li class="nav-item px-2">
                 <a class="nav-link" href="{% url "contact-us" %}">Contact</a>
               </li>
             </ul>
@@ -194,9 +197,21 @@
             <li class="mb-3">
               <div class="d-flex">
                 <div class="me-3">
-                  <i
-                    class="fas {% if news.category == 'sports' %}fa-trophy text-warning {% elif news.category == 'academic' %}fa-book text-success {% elif news.category == 'events' %}fa-calendar-alt text-primary {% elif news.category == 'health' %}fa-heartbeat text-danger {% else %}fa-newspaper text-info{% endif %} bg-light p-2 rounded-circle"
-                  ></i>
+                  <i class="fas 
+  {% if news.category == 'academic' %}fa-book text-primary
+  {% elif news.category == 'exams' %}fa-file-alt text-info
+  {% elif news.category == 'events' %}fa-calendar-days text-success
+  {% elif news.category == 'sports' %}fa-trophy text-warning
+  {% elif news.category == 'achievements' %}fa-medal text-success
+  {% elif news.category == 'meetings' %}fa-users text-secondary
+  {% elif news.category == 'holidays' %}fa-umbrella-beach text-danger
+  {% elif news.category == 'fees' %}fa-coins text-warning
+  {% elif news.category == 'health' %}fa-heartbeat text-danger
+  {% elif news.category == 'ict' %}fa-desktop text-primary
+  {% elif news.category == 'workshops' %}fa-chalkboard-teacher text-info
+  {% elif news.category == 'competitions' %}fa-award text-warning
+  {% else %}fa-clipboard-list text-muted
+  {% endif %} bg-light p-2 rounded-circle me-2"></i>
                 </div>
                 <div>
                   <a
@@ -212,7 +227,9 @@
                     <i class="far fa-clock me-1"></i>
                     {{ news.publish_date|timesince }} ago
                     {% if news.is_featured %}
-                    <span class="badge bg-warning ms-2 blink" style="animation-delay: {{ forloop.counter0|add:"0.2"|floatformat:1 }}s">New</span>
+                    <span class="badge bg-warning ms-2 blink" style="animation-delay: {{ forloop.counter0|add:"0.2"|floatformat:1 }}s">
+                      <i class="fas fa-star me-1"></i>New
+                    </span>
                     {% endif %}
                   </small>
                 </div>
@@ -265,8 +282,7 @@
               </h5>
               <p class="text-muted mb-3">School Headmaster</p>
               <p>
-                Welcome to Dr. John Chacha Secondary School. We are committed to
-                excellence in education and character formation...
+                It is a great pleasure to welcome you here and thank you for taking the time to browse our website. Dr. John Chacha Secondary School is ...
               </p>
               <a href="{% url 'read_more' %}" class="btn btn-link text-success"
                 >Read more <i class="bi bi-arrow-right"></i
@@ -299,7 +315,9 @@
                     <i class="far fa-clock me-1"></i>
                     {{ news.publish_date|timesince }} ago
                     {% if news.is_featured %}
-                    <span class="badge bg-warning ms-2 blink-random">New</span>
+                    <span class="badge bg-warning ms-2 blink" style="animation-delay: {{ forloop.counter0|add:"0.2"|floatformat:1 }}s">
+                      <i class="fas fa-star me-1"></i>New
+                    </span>
                     {% endif %}
                 </small>
                 </div>
@@ -566,10 +584,10 @@
             </p>
           </div>
           <div class="col-12 d-md-none">
-            <div class="px-4">
-              <div class="divider"></div>
-              </div>
-            </div>
+      
+            <div class="divider"></div>
+
+          </div>
           <!-- Quick Links Column -->
           <div class="col-12 col-md-6 col-lg-3 mb-4 mb-md-0 text-center text-md-start">
             <h6 class="fw-bold">Quick Links</h6>
@@ -595,9 +613,7 @@
             </p>
           </div>
           <div class="col-12 d-md-none">
-            <div class="px-4">
               <div class="divider"></div>
-              </div>
             </div>
           <!-- School Info Column -->
           <div class="col-12 col-md-6 col-lg-3 mb-4 mb-md-0 text-center text-md-start">
@@ -620,9 +636,7 @@
             <p>Since 2017</p>
           </div>
           <div class="col-12 d-md-none">
-            <div class="px-4">
               <div class="divider"></div>
-              </div>
             </div>
           <!-- Connect Column -->
           <div class="col-12 col-md-6 col-lg-3 text-center text-md-start">
@@ -654,7 +668,7 @@
         <hr class="my-4" />
         <div class="text-center py-2">
           <small class="designer-credit-line">
-            Designed with <i class="fa fa-heart text-danger"></i> by
+            Designed with <i class="fa fa-heart text-danger"></i>by
             <a href="https://deem.com" target="_blank">Deus</a>
           </small>
         </div>
@@ -691,6 +705,29 @@
           });
         }
       });
+      </script>
+
+      <script>
+        //AJAX Download Tracking
+  function incrementDownloadCount(pubId) {
+    // AJAX call to increment download count
+    fetch(`/publications/${pubId}/increment_download/`, {
+      method: 'POST',
+      headers: {
+        'X-CSRFToken': '{{ csrf_token }}',
+        'Content-Type': 'application/json',
+      },
+    })
+    .then(response => response.json())
+    .then(data => {
+      if(data.success) {
+        const downloadCount = document.querySelector(`#download-count-${pubId}`);
+        if(downloadCount) {
+          downloadCount.textContent = data.new_count;
+        }
+      }
+    });
+  }
       </script>
   </body>
 </html>

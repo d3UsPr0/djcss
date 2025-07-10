@@ -479,7 +479,6 @@ body {
 
 .footer h6 {
   font-size: 1.1rem;
-  margin-bottom: 1rem;
 }
 
 .footer a {
@@ -686,8 +685,19 @@ body {
   height: 2px;
   background-color: var(--site-purple);
   width: 80px;
-  margin: 1.5rem auto;
+  margin: 0.05rem auto;
   opacity: 0.5;
+}
+
+/* Remove extra spacing from mobile dividers */
+.col-12.d-md-none {
+  margin-top: -0.5rem; /* Compensates for Bootstrap's row gap */
+  margin-bottom: -0.5rem;
+}
+
+.col-12.d-md-none > .px-4 {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
 }
 
 /* Custom arrow styling */

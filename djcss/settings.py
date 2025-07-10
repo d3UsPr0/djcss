@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-=n8ka&ta(1ip6bcfghdi+*$z(dnl1&0(ju*16ag)x1j7tvn(oj
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    '192.168.0.13',
+    '192.168.0.58',
     '192.168.0.45',
     '10.23.207.103',
     '127.0.0.1',
@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.humanize',
 ]
 
 MEDIA_URL = '/media/'
