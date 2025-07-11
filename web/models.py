@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.utils import timezone
 from django.utils.text import slugify
 from django.core.validators import MinValueValidator
+from django_ckeditor_5.fields import CKEditor5Field
 
 # web/models.py
 class News(models.Model):
@@ -23,7 +24,7 @@ class News(models.Model):
 
     title = models.CharField(max_length=255)
     excerpt = models.TextField(blank=True, null=True)
-    content = models.TextField()
+    content = CKEditor5Field('Content', config_name='default')
     image = models.ImageField(upload_to='news_images/', blank=True, null=True)
     attachment = models.FileField(upload_to='news_attachments/', blank=True, null=True)
     author = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)

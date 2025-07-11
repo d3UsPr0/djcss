@@ -1,15 +1,48 @@
 from django.contrib import admin
 from django.utils.html import mark_safe
 from .models import News, Prayer, Publication, SchoolStatistics, Staff, WeeklyProgram
+from django_ckeditor_5.widgets import CKEditor5Widget
+from django import forms
 
 # Register your models here.
+class NewsAdminForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['content'].required = False  # Optional: Avoid "This field is required" errors
+
+    class Meta:
+        model = News
+        fields = '__all__'
+        widgets = {
+            'content': CKEditor5Widget(
+                attrs={'class': 'django_ckeditor_5'}, 
+                config_name='default'
+            ),
+        }
+        
 @admin.register(News)
 class NewsAdmin(admin.ModelAdmin):
+    form = NewsAdminForm  # Integrates CKEditor 5
     list_display = ('title', 'category', 'author', 'publish_date', 'is_published', 'is_featured')
     list_filter = ('category', 'is_published', 'is_featured')
     search_fields = ('title', 'excerpt', 'content')
     date_hierarchy = 'publish_date'
     ordering = ('-publish_date',)
+        
+class NewsAdminForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['content'].required = False  # Avoid "This field is required" errors
+
+    class Meta:
+        model = News
+        fields = '__all__'
+        widgets = {
+            'content': CKEditor5Widget(
+                attrs={'class': 'django_ckeditor_5'}, 
+                config_name='default'
+            ),
+        }
     
 @admin.register(WeeklyProgram)
 class WeeklyProgramAdmin(admin.ModelAdmin):
@@ -81,3 +114,4 @@ class PublicationAdmin(admin.ModelAdmin):
     list_filter = ('is_published', 'is_featured', 'date_uploaded')
     search_fields = ('title', 'subtitle')
     date_hierarchy = 'date_uploaded'
+

@@ -10,7 +10,7 @@
     <div class="card-body">
       {% if news %}
       <div id="newsDetailView">
-        <h4 id="newsDetailTitle" class="mb-3">{{ news.title }}</h4>
+        <h4 class="newsDetailTitle" class="mb-3">{{ news.title }}</h4>
 
         {% if news.image %}
         <img
@@ -22,7 +22,7 @@
         {% endif %}
 
         <div id="newsDetailContent" class="news-content">
-          {{ news.content|linebreaks }} {% if news.attachment %}
+          {{ news.content|safe|linebreaks }} {% if news.attachment %}
           <div class="mt-3 mb-3">
             <a
               href="{{ news.attachment.url }}"

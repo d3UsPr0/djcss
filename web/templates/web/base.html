@@ -171,7 +171,19 @@
       </nav>
     </div>
     <!-- End Navigation -->
-
+    <div class="wide-container announcement-bar bg-success text-white rounded py-1 py-md-2 mt-3">
+      <div class="container position-relative" style="overflow: hidden;">
+        <div class="d-flex justify-content-between align-items-center">
+          <div class="scrolling-text-wrapper" style="flex: 1; min-width: 0; overflow: hidden;">
+            <div class="scrolling-text">
+              <span class="badge bg-warning text-success me-2">NEW</span>
+              Admission is open for Form I-IV | Call +255 620 686 736 for inquiries
+            </div>
+          </div>
+          <a href="{% url 'admissions' %}" class="btn btn-sm btn-warning text-success fw-bold ms-2">Apply Now →</a>
+        </div>
+      </div>
+    </div>
     <!-- Slideshow -->
     {% block slideshow %}{% endblock slideshow %}
     <!-- End Slideshow -->
@@ -582,6 +594,11 @@
               <i class="fa fa-sm fa-envelope text-primary me-2"></i>
               drjcss2017@gmail.com
             </p>
+            
+              <a href="https://maps.app.goo.gl/hXZGPJj7AFUFyxqd6" target="_blank" class="btn btn-success btn-sm" style="color: white; text-decoration: none;">
+                <i class="fas fa-directions me-1"></i> Get Directions
+              </a>
+           
           </div>
           <div class="col-12 d-md-none">
       
@@ -603,7 +620,7 @@
             </p>
             <p class="heading">
               <a href="#" class="text-decoration-none"
-                ><i class="fa fa-angle-right me-2"></i>HESLB</a
+                ><i class="fa fa-angle-right me-2"></i>Downloads</a
               >
             </p>
             <p class="heading">
@@ -693,19 +710,17 @@
     <script src="{% static 'web/js/custom.js' %}"></script>
     <script>
       document.addEventListener("DOMContentLoaded", function () {
-        const newsTitle = document.getElementById("newsDetailTitle");
-      
-        // Trigger animation on page load
-        if (newsTitle) {
-          newsTitle.classList.add("highlight-animation");
-      
-          // Remove class after animation completes to allow re-animation on page refresh
-          newsTitle.addEventListener("animationend", function () {
+        const titles = document.querySelectorAll(".newsDetailTitle"); // Selects ALL matching elements
+        
+        titles.forEach(title => {
+          title.classList.add("highlight-animation");
+          
+          title.addEventListener("animationend", function () {
             this.classList.remove("highlight-animation");
           });
-        }
+        });
       });
-      </script>
+    </script>
 
       <script>
         //AJAX Download Tracking

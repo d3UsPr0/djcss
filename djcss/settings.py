@@ -28,7 +28,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     '192.168.0.58',
-    '192.168.0.45',
+    '192.168.0.16',
     '10.23.207.103',
     '127.0.0.1',
     '10.91.18.90',
@@ -47,7 +47,44 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.humanize',
+    'django_ckeditor_5',
 ]
+
+# CKEditor 5 Config
+CKEDITOR_5_CONFIGS = {
+    'default': {
+        'toolbar': [
+            'heading', '|',
+            'bold', 'italic', 'underline', 'strikethrough', 'link', '|',
+            'bulletedList', 'numberedList', 'outdent', 'indent', '|',
+            'alignment', 'blockQuote', 'codeBlock', '|',
+            'imageUpload', 'insertTable', 'mediaEmbed', '|',
+            'undo', 'redo'
+        ],
+        'image': {
+            'toolbar': ['imageTextAlternative', 'imageStyle:full', 'imageStyle:side']
+        },
+          'link': {
+            'addTargetToExternalLinks': True,  # Auto-add target="_blank" to external links
+            'decorators': [
+                {
+                    'mode': 'manual',
+                    'label': 'Open in new tab',
+                    'attributes': {
+                        'target': '_blank',
+                        'rel': 'noopener noreferrer',  # Security best practice
+                    }
+                }
+            ]
+        },
+        'table': {
+            'contentToolbar': ['tableColumn', 'tableRow', 'mergeTableCells']
+        },
+        
+        'language': 'en'
+    }
+}
+
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
