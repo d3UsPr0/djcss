@@ -1,7 +1,7 @@
 # web/context_processors.py
 from django.utils import timezone
 from django.db.models import Q
-from .models import News, Prayer, WeeklyProgram, SchoolStatistics
+from .models import GalleryImage, News, Prayer, WeeklyProgram, SchoolStatistics
 
 def global_context(request):
     """Makes these variables available in all templates"""
@@ -38,6 +38,12 @@ def global_context(request):
     prayers = Prayer.get_current_week_prayers()
     current_week_title = prayers[0].week_title if prayers.exists() else ""
     
+          # Get all images with featured ones first
+    all_photos = GalleryImage.objects.filter(is_featured=False).order_by('-upload_date')
+    
+    # Separate featured photos for carousel
+    featured_photos = GalleryImage.objects.filter(is_featured=True)
+    
     
      
     return {
@@ -47,6 +53,9 @@ def global_context(request):
         'global_school_stats': school_stats,
         'global_current_year': current_year,
         'prayers': prayers,
-        'current_week_title': current_week_title
+        'current_week_title': current_week_title,
+        'featured_photos': featured_photos,
+        'gallery_photos': all_photos,
+        'has_featured': featured_photos.exists()
     }
     

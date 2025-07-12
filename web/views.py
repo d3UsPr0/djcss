@@ -6,18 +6,8 @@ from django.shortcuts import get_object_or_404
 from django.views.decorators.http import require_POST
 
 def home(request):
-      # Get all images with featured ones first
-    all_photos = GalleryImage.objects.filter(is_featured=False).order_by('-upload_date')
-    
-    # Separate featured photos for carousel
-    featured_photos = GalleryImage.objects.filter(is_featured=True)
 
-    context = {
-        'featured_photos': featured_photos,
-        'gallery_photos': all_photos,
-        'has_featured': featured_photos.exists()
-    }
-    return render(request, 'web/home.html', context)
+    return render(request, 'web/home.html')
 
 def news_detail(request, slug):
     # Only need to pass news-specific data
