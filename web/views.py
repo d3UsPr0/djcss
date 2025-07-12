@@ -1,12 +1,23 @@
 from django.http import JsonResponse
 from django.shortcuts import render
 from django.utils import timezone
-from .models import News, Prayer, Publication, Staff, SchoolStatistics, WeeklyProgram
+from .models import GalleryImage, News, Prayer, Publication, Staff, SchoolStatistics, WeeklyProgram
 from django.shortcuts import get_object_or_404
 from django.views.decorators.http import require_POST
 
 def home(request):
-    return render(request, 'web/home.html')
+      # Get all images with featured ones first
+    all_photos = GalleryImage.objects.filter(is_featured=False).order_by('-upload_date')
+    
+    # Separate featured photos for carousel
+    featured_photos = GalleryImage.objects.filter(is_featured=True)
+
+    context = {
+        'featured_photos': featured_photos,
+        'gallery_photos': all_photos,
+        'has_featured': featured_photos.exists()
+    }
+    return render(request, 'web/home.html', context)
 
 def news_detail(request, slug):
     # Only need to pass news-specific data
@@ -81,3 +92,16 @@ def increment_download_count(request, pk):
     publication = get_object_or_404(Publication, pk=pk)
     publication.increment_download_count()
     return JsonResponse({'success': True, 'new_count': publication.download_count})
+
+def gallery(request):
+         # Get all images with featured ones first
+    all_photos = GalleryImage.objects.all().order_by('-is_featured', '-upload_date')
+    
+    
+    context = {
+        
+        'gallery_photos': all_photos,
+
+    }
+
+    return render(request, 'web/gallery.html', context)

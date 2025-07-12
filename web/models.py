@@ -4,6 +4,7 @@ from django.utils import timezone
 from django.utils.text import slugify
 from django.core.validators import MinValueValidator
 from django_ckeditor_5.fields import CKEditor5Field
+from django.core.validators import FileExtensionValidator
 
 # web/models.py
 class News(models.Model):
@@ -224,4 +225,46 @@ class Publication(models.Model):
         """Call this when file is downloaded"""
         self.download_count += 1
         self.save(update_fields=['download_count'])
+        
+class GalleryImage(models.Model):
+    """Model for storing school gallery images with featured flag"""
+    title = models.CharField(
+        max_length=200,
+        help_text="Short descriptive title for the image"
+    )
+    caption = models.TextField(
+        blank=True,
+        help_text="Detailed description of the image (shown in popups)"
+    )
+    image = models.ImageField(
+        upload_to='gallery/%Y/%m/%d/',
+        validators=[
+            FileExtensionValidator(allowed_extensions=['jpg', 'jpeg', 'png', 'webp'])
+        ],
+        help_text="Upload high-quality school images"
+    )
+    is_featured = models.BooleanField(
+        default=False,
+        help_text="Featured images appear in the homepage slideshow"
+    )
+    date_taken = models.DateField(
+        blank=True,
+        null=True,
+        help_text="When was this photo taken? (optional)"
+    )
+    upload_date = models.DateTimeField(auto_now_add=True)
+    last_updated = models.DateTimeField(auto_now=True)
+    
+    class Meta:
+        ordering = ['-is_featured', '-upload_date']
+        verbose_name_plural = "Gallery Images"
+    
+    def __str__(self):
+        return f"{self.title} ({self.date_taken or 'No date'})"
+
+    @property
+    def image_url(self):
+        """Returns the full URL of the image"""
+        return self.image.url if self.image else None
+
     

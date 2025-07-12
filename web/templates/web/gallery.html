@@ -9,14 +9,31 @@
       </div>
     <div class="card-body">
       <h4 class="mb-3 newsDetailTitle">School Gallery</h4>
-      <ul class="list-unstyled video-list">
-        <li class="text-center text-muted py-3">
-          Gallery is currently under development.<br> Please check back later.
-        </li>
-        <li class="text-center text-muted py-3">
-            Go back <a href="{% url 'home' %}" class="text-decoration-none heading">Home</a>
-          </li>
-      </ul>
+      <div class="row g-3 gallery-grid">
+        {% for photo in gallery_photos %}
+        <div class="col-6 col-md-4 col-lg-3 gallery-item">
+          <div class="gallery-thumbnail position-relative">
+            <img src="{{ photo.image.url }}" 
+                 class="img-fluid rounded shadow-sm" 
+                 alt="{{ photo.caption|default:'School Photo' }}"
+                 loading="lazy">
+            <div class="gallery-overlay position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center">
+              <a href="{{ photo.image.url }}" class="zoom-btn rounded-circle d-flex align-items-center justify-content-center" data-lightbox="school-gallery" data-title="{{ photo.caption }}">
+                <i class="fas fa-search-plus text-white"></i>
+              </a>
+            </div>
+          </div>
+          {% if photo.title %}
+          <p class="small text-muted mt-2 mb-0 text-truncate">{{ photo.title }}</p>
+          {% endif %}
+        </div>
+        {% empty %}
+        <div class="col-12 text-center py-5">
+          <i class="fas fa-image fa-4x text-muted mb-3"></i>
+          <p class="text-muted">No photos available in the gallery</p>
+        </div>
+        {% endfor %}
+      </div>
     </div>
   </div>
 </div>

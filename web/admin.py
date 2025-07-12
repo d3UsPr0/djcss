@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.utils.html import mark_safe
-from .models import News, Prayer, Publication, SchoolStatistics, Staff, WeeklyProgram
+from .models import GalleryImage, News, Prayer, Publication, SchoolStatistics, Staff, WeeklyProgram
 from django_ckeditor_5.widgets import CKEditor5Widget
 from django import forms
 
@@ -114,4 +114,17 @@ class PublicationAdmin(admin.ModelAdmin):
     list_filter = ('is_published', 'is_featured', 'date_uploaded')
     search_fields = ('title', 'subtitle')
     date_hierarchy = 'date_uploaded'
+    
+@admin.register(GalleryImage)
+class GalleryImageAdmin(admin.ModelAdmin):
+    list_display = ('title', 'thumbnail', 'is_featured', 'date_taken', 'upload_date')
+    list_filter = ('is_featured', 'date_taken')
+    search_fields = ('title', 'caption')
+    list_editable = ('is_featured',)
+    date_hierarchy = 'upload_date'
+    readonly_fields = ('thumbnail',)
+    
+    def thumbnail(self, obj):
+        return obj.image.url if obj.image else "-"
+    thumbnail.short_description = "Preview"
 
