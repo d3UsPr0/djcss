@@ -569,6 +569,7 @@ body {
   opacity: 1;
   transform: scale(1.1);
   background: rgba(255, 255, 255, 0.3);
+  cursor: pointer;
 }
 
 .gallery-overlay-modal {

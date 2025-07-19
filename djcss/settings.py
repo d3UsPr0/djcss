@@ -27,13 +27,6 @@ SECRET_KEY = 'django-insecure-=n8ka&ta(1ip6bcfghdi+*$z(dnl1&0(ju*16ag)x1j7tvn(oj
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    '192.168.0.58',
-    '192.168.0.16',
-    '10.23.207.103',
-    '10.217.151.103',
-    '127.0.0.1',
-    '10.91.18.90',
-    '10.20.75.103',
 ]
 
 
@@ -135,7 +128,6 @@ DATABASES = {
     }
 }
 
-
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
 
@@ -171,6 +163,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
