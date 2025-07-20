@@ -1,0 +1,8 @@
+deployment:
+  tasks:
+    - source /home/drjohnch/virtualenv/djcss/3.12/bin/activate
+    - cd /home/drjohnch/djcss
+    - pip install -r requirements.txt
+    - python manage.py migrate --noinput
+    - python manage.py collectstatic --noinput
+    - touch tmp/restart.txt
