@@ -54,6 +54,8 @@ def academics(request):
 
 def gallery(request):
     return render(request, 'web/gallery.html')
+def about(request):
+    return render(request, 'web/about.html')
 
 def publication_list(request):
     # Get featured publications first (published and featured)

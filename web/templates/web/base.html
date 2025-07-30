@@ -121,23 +121,9 @@
               <li class="nav-item px-2">
                 <a class="nav-link" href="{% url "home" %}">Home</a>
               </li>
-              {% comment %} <li class="nav-item px-2 dropdown">
-                <a
-                  class="nav-link dropdown-toggle"
-                  href="#"
-                  id="aboutDropdown"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                  data-bs-auto-close="outside"
-                  >About Us</a
-                >
-                <ul class="dropdown-menu" aria-labelledby="aboutDropdown">
-                  <li><a class="dropdown-item" href="#">Who We Are</a></li>
-                  <li><a class="dropdown-item" href="#">Mission</a></li>
-                  <li><a class="dropdown-item" href="#">Vision</a></li>
-                </ul>
-              </li> {% endcomment %}
+               <li class="nav-item px-2">
+                <a class="nav-link" href="{% url "about" %}">About Us</a>
+              </li>
               <li class="nav-item px-2">
                 <a class="nav-link" href="{% url "academics" %}">Academics</a>
               </li>
@@ -289,7 +275,7 @@
         <div class="col-md-4 d-flex">
           <div class="card w-100 border-0">
             <div class="card-header card-header-custom">
-              <i class="fas fa-user-tie me-2"></i> Headmaster's Welcome
+              <i class="fas fa-user-tie me-2"></i>Welcome note
             </div>
             <div class="card-body text-center">
               <img

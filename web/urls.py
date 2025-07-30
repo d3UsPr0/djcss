@@ -16,5 +16,6 @@ urlpatterns = [
     path('gallery/', views.gallery, name='gallery'),
     path('downloads/', views.publication_list, name='downloads'),
     path('publications/<int:pk>/increment_download/', views.increment_download_count, name='increment_download'),
+    path('about/', views.about, name='about'),
 ]
 

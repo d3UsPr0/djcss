@@ -27,7 +27,11 @@ SECRET_KEY = 'django-insecure-=n8ka&ta(1ip6bcfghdi+*$z(dnl1&0(ju*16ag)x1j7tvn(oj
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    '*'
+    'drjohnchachasecondary.org',
+    'www.drjohnchachasecondary.org',
+    '10.112.180.103',
+    'localhost',
+    '127.0.0.1',
 ]
 
 

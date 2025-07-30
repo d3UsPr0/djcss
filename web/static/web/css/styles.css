@@ -56,8 +56,8 @@ body {
 }
 
 .announcement-bar {
-  padding-top: 0.4rem !important;
-  padding-bottom: 0.4rem !important;
+  padding-top: 0.25rem !important;
+  padding-bottom: 0.25rem !important;
 }
 
 @media (min-width: 768px) {
@@ -70,13 +70,27 @@ body {
 .scrolling-text {
   display: inline-block;
   white-space: nowrap;
-  padding-left: 100%;
+  padding-left: 70%;
   animation: scroll 15s linear infinite;
   font-size: 0.85rem;
 }
 
 .scrolling-text:hover {
   animation-play-state: paused;
+}
+.scrolling-text-wrapper {
+  line-height: 1.2 !important;  /* Tighter line spacing */
+}
+
+.announcement-bar .badge {
+  padding: 0.15em 0.4em !important;
+  font-size: 0.75em !important;
+}
+
+.announcement-bar .btn {
+  padding: 0.15rem 0.5rem !important;
+  font-size: 0.8rem !important;
+  line-height: 1.2 !important;
 }
 
 @keyframes scroll {
@@ -938,5 +952,148 @@ body {
   .prayer-slide {
     padding-left: 1.5rem;
     padding-right: 1.5rem;
+  }
+}
+
+/* ===== Card Container Styles ===== */
+.school-intro-card {
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.school-intro-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
+
+/* ===== Card Header Styles ===== */
+.card-header-custom {
+  background-color: #6f42c1;
+  color: white;
+  font-weight: 600;
+  padding: 12px 20px;
+  border-bottom: none;
+}
+
+.card-header-custom i {
+  font-size: 1.1rem;
+}
+
+/* ===== Portrait Image Styles ===== */
+.school-portrait-wrapper {
+  height: 100%;
+  min-height: 320px;
+  position: relative;
+  overflow: hidden;
+  padding: 5px; /* Added padding */
+}
+
+.school-portrait {
+  width: calc(100% - 30px); /* Adjust width to account for padding */
+  height: calc(100% - 30px); /* Adjust height to account for padding */
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.5s ease;
+  margin: 15px; /* Added margin as alternative to padding */
+  border-radius: 4px; /* Optional: slight rounding of image corners */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1); /* Optional: subtle depth */
+}
+
+/* Ensure the image container doesn't collapse */
+.card-body .row {
+  align-items: stretch; /* Makes columns equal height */
+}
+.school-portrait:hover {
+  transform: scale(1.03);
+}
+
+/* ===== Content Area Styles ===== */
+#newsDetailView {
+  /* padding: 20px; */
+}
+
+.newsDetailTitle {
+  color: #2c3e50;
+  font-weight: 700;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.newsDetailTitle::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 50px;
+  height: 3px;
+  background: #6f42c1;
+}
+
+/* ===== List Item Styles ===== */
+#newsDetailContent {
+  line-height: 1.6;
+  color: #4a5568;
+}
+
+.custom-bullet-list {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 1.5rem;
+}
+
+.custom-bullet-list li {
+  padding: 10px 0 10px 30px;
+  position: relative;
+  border-bottom: 1px solid #edf2f7;
+  transition: all 0.3s ease;
+}
+
+.custom-bullet-list li:last-child {
+  border-bottom: none;
+}
+
+.custom-bullet-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 14px;
+  width: 18px;
+  height: 18px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%236f42c1'%3E%3Cpath d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.custom-bullet-list li:hover {
+  transform: translateX(5px);
+  color: #2d3748;
+}
+
+/* ===== Responsive Adjustments ===== */
+@media (max-width: 768px) {
+    .school-portrait-wrapper {
+    padding: 10px;
+    min-height: auto;
+  }
+  .school-portrait {
+    width: calc(100% - 20px);
+    height: auto;
+    margin: 10px;
+  }
+  
+  #newsDetailView {
+    /* padding: 15px; */
+  }
+  
+  .newsDetailTitle {
+    font-size: 1.3rem;
+  }
+  
+  .custom-bullet-list li {
+    padding: 8px 0 8px 25px;
   }
 }
