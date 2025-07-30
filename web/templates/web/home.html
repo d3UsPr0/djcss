@@ -61,21 +61,10 @@
 <!--End Slideshow-->
 
 {% block content %}
-<div class="col-md-8 d-flex">
-  <div class="card w-100  border-0">
-    <div class="card-header card-header-custom">
-      <i class="fas fa-book-reader me-2"></i>Reading on ...
-    </div>
     <div class="card-body">
       <div id="newsDetailView">
         <h4 class="newsDetailTitle" class="mb-3">About Us</h4>
         <div id="newsDetailContent" class="news-content">
-          <img
-  id="newsDetailImage"
-  src="{% static 'media/gallery/2025/07/22/20250618_HopeCo_Still_00192_Reduced.jpg' %}"
-  class="img-fluid rounded mb-3"
-  alt="DJCSS – A Beautiful View from Above"
-/>
           <p>
             <strong>Dr. John Chacha Secondary School (DJCSS)</strong> is a prestigious co-educational O‑Level boarding and day school located in Tarime, Mara Region, Tanzania. Owned by HopeCo and managed by Hope Community Development, DJCSS operates under the Tanzania Education System (NECTA) and proudly supports both academic and holistic growth.
           </p>
@@ -90,6 +79,14 @@
             <li>Students are continuously <strong>encouraged to achieve their best</strong>, recognized, and celebrated for their accomplishments </li>
             <li>Our NECTA CSEE results show <strong>impressive performance</strong>, placing us among the top-performing schools in the Mara region .</li>
           </ul>
+                   {% comment %} {% if welcome_photo %}
+  <img
+    id="newsDetailImage"
+    src="{{ welcome_photo.first.image.url }}"
+    class="img-fluid rounded mb-3"
+    alt="{{ welcome_photo.first.caption|default:'DJCSS – Welcome' }}"
+  />
+{% endif %} {% endcomment %}
           
           <h4 class="newsDetailTitle">Holistic Development</h4>
           <ul>
@@ -119,6 +116,4 @@
         </div>
       </div>
     </div>
-  </div>
-</div>
 {% endblock content %}

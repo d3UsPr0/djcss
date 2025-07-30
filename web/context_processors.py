@@ -43,9 +43,8 @@ def global_context(request):
     
     # Separate featured photos for carousel
     featured_photos = GalleryImage.objects.filter(is_featured=True)
-    
-    
-     
+    welcome_photo = GalleryImage.objects.filter(is_about=True)
+
     return {
         'global_featured_news': featured_news,
         'global_bulletins': bulletins,
@@ -56,6 +55,7 @@ def global_context(request):
         'current_week_title': current_week_title,
         'featured_photos': featured_photos,
         'gallery_photos': all_photos,
-        'has_featured': featured_photos.exists()
+        'has_featured': featured_photos.exists(),
+        'welcome_photo': welcome_photo if welcome_photo.exists() else None
     }
     

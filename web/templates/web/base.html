@@ -194,9 +194,17 @@
   <div class="row g-3">
     <!-- News Read -->
 
-    {% block content %}
+   
+    <div class="col-md-8 d-flex">
+  <div class="card w-100 shadow-sm border-0">
+    <div class="card-header card-header-custom">
+        <i class="fas fa-book-reader me-2"></i>Reading on ...
+      </div>
+       {% block content %}
+       {% endblock content %}
+  </div>
+</div>
     
-    {% endblock content %}
 
     <!-- News Bulletins -->
     <div class="col-md-4 d-flex">

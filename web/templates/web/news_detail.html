@@ -2,11 +2,7 @@
 {% load static %} 
 
 {% block content %}
-<div class="col-md-8 d-flex">
-  <div class="card w-100 shadow-sm border-0">
-    <div class="card-header card-header-custom">
-      <i class="fas fa-book-reader me-2"></i>Reading on ...
-    </div>
+
     <div class="card-body">
       {% if news %}
       <div id="newsDetailView">
@@ -50,6 +46,4 @@
       <div class="alert alert-info">No news available at the moment.</div>
       {% endif %}
     </div>
-  </div>
-</div>
 {% endblock content %}

@@ -247,6 +247,10 @@ class GalleryImage(models.Model):
         default=False,
         help_text="Featured images appear in the homepage slideshow"
     )
+    is_about = models.BooleanField(
+        default=False,
+        help_text="Set to true if this image is used in the About Us section"
+    )
     date_taken = models.DateField(
         blank=True,
         null=True,
