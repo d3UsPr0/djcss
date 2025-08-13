@@ -1010,9 +1010,6 @@ body {
 }
 
 /* ===== Content Area Styles ===== */
-#newsDetailView {
-  /* padding: 20px; */
-}
 
 .newsDetailTitle {
   color: #2c3e50;
@@ -1083,10 +1080,6 @@ body {
     width: calc(100% - 20px);
     height: auto;
     margin: 10px;
-  }
-  
-  #newsDetailView {
-    /* padding: 15px; */
   }
   
   .newsDetailTitle {
